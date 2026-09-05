@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Arjun Singh Jadon - B.Tech Computer Science & Engineering Student at SISTec Bhopal, Aspiring Software Engineer, and AI Enthusiast.">
+    <title>Arjun Singh Jadon | Software Engineer & AI Developer</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            950: '#08090D',
+                            900: '#0E1017',
+                            800: '#141722',
+                            700: 'rgba(255, 255, 255, 0.08)',
+                        },
+                        electric: {
+                            500: '#3B82F6',
+                            600: '#2563EB',
+                            400: '#60A5FA',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#08090D] text-[#F9FAFB] antialiased selection:bg-[#3B82F6] selection:text-[#08090D] relative">
+
+    <!-- 3D Interactive WebGL Particles Canvas -->
+    <canvas id="bg-canvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 opacity-60"></canvas>
+
+    <!-- Sticky Glass Navbar -->
+    <header class="sticky top-0 z-50 nav-sticky">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center" aria-label="Main Navigation">
+            <!-- Logo / Name -->
+            <a href="#home" class="text-xl font-bold tracking-tight text-[#F9FAFB] hover:text-[#3B82F6] transition-colors flex items-center gap-1">
+                <span class="text-[#3B82F6] font-mono">&lt;</span>Arjun Singh Jadon<span class="text-[#3B82F6] font-mono"> /&gt;</span>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-[#9CA3AF]">
+                <a href="#home" class="nav-link-modern hover:text-[#F9FAFB] transition-colors">Home</a>
+                <a href="#about" class="nav-link-modern hover:text-[#F9FAFB] transition-colors">About</a>
+                <a href="#education" class="nav-link-modern hover:text-[#F9FAFB] transition-colors">Education</a>
+                <a href="#skills" class="nav-link-modern hover:text-[#F9FAFB] transition-colors">Skills</a>
+                <a href="#projects" class="nav-link-modern hover:text-[#F9FAFB] transition-colors">Projects</a>
+                <a href="#certifications" class="nav-link-modern hover:text-[#F9FAFB] transition-colors">Certifications</a>
+                <a href="#contact" class="nav-link-modern hover:text-[#F9FAFB] transition-colors">Contact</a>
+                <a href="resume.pdf" download target="_blank" rel="noopener noreferrer" class="btn-blue-primary text-xs py-2.5 px-5 font-semibold tracking-wider uppercase rounded-lg">
+                    Resume
+                </a>
+            </div>
+
+            <!-- Mobile Hamburger Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-[#9CA3AF] hover:text-[#3B82F6] focus:outline-none p-2" aria-label="Toggle Mobile Menu">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </nav>
+
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#0E1017] border-b border-white/10 px-6 py-6 space-y-4">
+            <a href="#home" class="block text-base text-[#9CA3AF] hover:text-[#3B82F6]">Home</a>
+            <a href="#about" class="block text-base text-[#9CA3AF] hover:text-[#3B82F6]">About</a>
+            <a href="#education" class="block text-base text-[#9CA3AF] hover:text-[#3B82F6]">Education</a>
+            <a href="#skills" class="block text-base text-[#9CA3AF] hover:text-[#3B82F6]">Skills</a>
+            <a href="#projects" class="block text-base text-[#9CA3AF] hover:text-[#3B82F6]">Projects</a>
+            <a href="#certifications" class="block text-base text-[#9CA3AF] hover:text-[#3B82F6]">Certifications</a>
+            <a href="#contact" class="block text-base text-[#9CA3AF] hover:text-[#3B82F6]">Contact</a>
+            <a href="resume.pdf" download target="_blank" rel="noopener noreferrer" class="inline-block btn-blue-primary text-xs py-2 px-6 font-semibold uppercase tracking-wider rounded-lg">
+                Resume
+            </a>
+        </div>
+    </header>
+
+    <!-- SECTION 1: Home (Hero Section) -->
+    <section id="home" class="relative min-h-[90vh] flex items-center justify-center px-6 py-16 hero-radial-bg z-10">
+        <div class="max-w-7xl mx-auto w-full grid md:grid-cols-12 gap-12 items-center z-10">
+            
+            <!-- Left Column: Introduction & Controls -->
+            <div class="md:col-span-7 space-y-6 reveal-on-scroll">
+                <div class="badge-code">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#3B82F6] opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-[#3B82F6]"></span>
+                    </span>
+                    <span>B.Tech CS Student • SISTec Bhopal</span>
+                </div>
+
+                <h1 class="text-4xl sm:text-6xl font-bold tracking-tight text-[#F9FAFB] leading-tight">
+                    Arjun Singh Jadon
+                </h1>
+
+                <h2 class="text-xl sm:text-2xl font-semibold text-[#60A5FA] min-h-[2.5rem] flex items-center gap-1">
+                    <span id="typewriter-text"></span><span class="animate-pulse text-[#3B82F6] font-normal">|</span>
+                </h2>
+
+                <p class="text-base sm:text-lg text-[#9CA3AF] leading-relaxed max-w-xl font-normal">
+                    Computer Science Engineering student at SISTec Bhopal passionate about building practical technology solutions, mastering DSA & OOP, and exploring AI-powered applications.
+                </p>
+
+                <!-- Hero Action Buttons -->
+                <div class="flex flex-wrap items-center gap-4 pt-2">
+                    <a href="#projects" class="btn-blue-primary">
+                        <i class="fas fa-rocket mr-2 text-xs"></i> View Projects
+                    </a>
+                    <a href="resume.pdf" download target="_blank" rel="noopener noreferrer" class="btn-outline-secondary">
+                        <i class="fas fa-file-arrow-down mr-2 text-xs text-[#3B82F6]"></i> Download Resume
+                    </a>
+                </div>
+
+                <!-- Social Links Bar -->
+                <div class="flex items-center gap-3 pt-4">
+                    
+                    <a href="https://github.com/Newengineer280705" target="_blank" rel="noopener noreferrer" class="social-btn-modern" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/arjun-singh-jadon-649619333" target="_blank" rel="noopener noreferrer" class="social-btn-modern" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="mailto:arjun101jadone@gmail.com" class="social-btn-modern" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <!-- Right Column: Profile Image Container -->
+            <div class="md:col-span-5 flex justify-center items-center reveal-on-scroll">
+                <div class="profile-gradient-container">
+                    <img src="MYpic2.png" 
+                          alt="Arjun Singh Jadon" 
+                          class="w-64 h-64 sm:w-80 sm:h-80 md:w-[320px] md:h-[320px] rounded-full object-cover bg-[#141722]">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 2: About -->
+    <section id="about" class="py-24 px-6 section-bg-alt border-t border-white/5 relative z-10">
+        <div class="max-w-6xl mx-auto reveal-on-scroll">
+            <div class="flex items-center gap-3 mb-10">
+                <div class="w-10 h-10 rounded-xl bg-[#3B82F6]/10 border border-[#3B82F6]/20 flex items-center justify-center text-[#3B82F6]">
+                    <i class="fas fa-user-graduate text-lg"></i>
+                </div>
+                <div>
+                    <h2 class="text-3xl font-bold text-[#F9FAFB]">About Me</h2>
+                    <p class="text-xs text-[#9CA3AF]">My background, goals, and core engineering focus</p>
+                </div>
+                <span class="h-0.5 flex-1 bg-white/10 ml-4"></span>
+            </div>
+
+            <div class="grid md:grid-cols-12 gap-8 items-stretch">
+                <!-- Bio Story -->
+                <div class="md:col-span-7 card-base p-8 space-y-5">
+                    <h3 class="text-xl font-bold text-[#3B82F6] flex items-center gap-2">
+                        <i class="fas fa-compass text-[#60A5FA]"></i> My Journey & Vision
+                    </h3>
+                    <p class="text-[#F9FAFB] leading-relaxed text-base font-normal">
+                        I'm <strong class="text-[#60A5FA] font-semibold">Arjun Singh Jadon</strong>, a Computer Science and Engineering student currently pursuing my B.Tech. I am passionate about software development, Data Structures & Algorithms, Artificial Intelligence, and building practical technology solutions.
+                    </p>
+                    <p class="text-[#9CA3AF] leading-relaxed text-sm">
+                        I enjoy learning new technologies and turning ideas into working projects. My current focus is on strengthening my programming, problem-solving, and software development skills while exploring AI-powered applications and modern development tools. My long-term goal is to build a strong career as a Software Engineer.
+                    </p>
+                </div>
+
+                <!-- Personal Highlights -->
+                <div class="md:col-span-5 card-base p-8 border-l-4 border-l-[#3B82F6] space-y-5">
+                    <h3 class="text-xl font-bold text-[#F9FAFB] flex items-center gap-2">
+                        <i class="fas fa-bolt text-[#3B82F6]"></i> Key Highlights
+                    </h3>
+
+                    <ul class="space-y-4 text-xs text-[#9CA3AF]">
+                        <li class="flex items-start gap-3">
+                            <div class="w-7 h-7 rounded-lg bg-[#3B82F6]/10 flex items-center justify-center text-[#3B82F6] shrink-0 mt-0.5">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div>
+                                <strong class="text-[#F9FAFB] block text-xs">Degree Program</strong>
+                                <span>B.Tech in Computer Science & Engineering</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-7 h-7 rounded-lg bg-[#3B82F6]/10 flex items-center justify-center text-[#3B82F6] shrink-0 mt-0.5">
+                                <i class="fas fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <strong class="text-[#F9FAFB] block text-xs">Location</strong>
+                                <span>Bhopal, Madhya Pradesh, India</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-7 h-7 rounded-lg bg-[#3B82F6]/10 flex items-center justify-center text-[#3B82F6] shrink-0 mt-0.5">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div>
+                                <strong class="text-[#F9FAFB] block text-xs">Tech Focus</strong>
+                                <span>Java, C++, DSA, OOP & Web Development</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-7 h-7 rounded-lg bg-[#3B82F6]/10 flex items-center justify-center text-[#3B82F6] shrink-0 mt-0.5">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div>
+                                <strong class="text-[#F9FAFB] block text-xs">Activities & Projects</strong>
+                                <span>Technical workshops, hackathons & AI medicine scanner project</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: Education -->
+    <section id="education" class="py-24 px-6 border-t border-white/5 relative z-10">
+        <div class="max-w-6xl mx-auto reveal-on-scroll">
+            <div class="flex items-center gap-3 mb-10">
+                <div class="w-10 h-10 rounded-xl bg-[#3B82F6]/10 border border-[#3B82F6]/20 flex items-center justify-center text-[#3B82F6]">
+                    <i class="fas fa-graduation-cap text-lg"></i>
+                </div>
+                <div>
+                    <h2 class="text-3xl font-bold text-[#F9FAFB]">Education</h2>
+                    <p class="text-xs text-[#9CA3AF]">My academic qualifications and background</p>
+                </div>
+                <span class="h-0.5 flex-1 bg-white/10 ml-4"></span>
+            </div>
+
+            <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-6">
+                <!-- Degree Card -->
+                <div class="card-base p-8 relative border-l-4 border-l-[#3B82F6] space-y-4 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-semibold px-3.5 py-1 rounded-full bg-[#3B82F6]/10 border border-[#3B82F6]/20 text-[#60A5FA]">
+                                2024 – 2028
+                            </span>
+                            <span class="text-xs text-[#9CA3AF] font-medium"><i class="fas fa-location-dot text-[#3B82F6] mr-1"></i> Bhopal, MP</span>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-[#F9FAFB] leading-snug">
+                            B.Tech in Computer Science & Engineering
+                        </h3>
+
+                        <p class="text-sm font-semibold text-[#3B82F6]">
+                            Sagar Institute of Science and Technology (SISTec), Gandhinagar, Bhopal
+                        </p>
+                    </div>
+
+                    <div class="pt-2 flex flex-wrap gap-2 text-xs">
+                        <span class="px-2.5 py-1 bg-[#08090D] border border-white/10 text-[#9CA3AF] rounded-md">Computer Science</span>
+                        <span class="px-2.5 py-1 bg-[#08090D] border border-white/10 text-[#9CA3AF] rounded-md">Software Engineering</span>
+                        <span class="px-2.5 py-1 bg-[#08090D] border border-white/10 text-[#9CA3AF] rounded-md">DSA & Programming</span>
+                    </div>
+                </div>
+
+                <!-- Higher Secondary (Class 12th) Card -->
+                <div class="card-base p-8 relative border-l-4 border-l-[#3B82F6] space-y-4 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-semibold px-3.5 py-1 rounded-full bg-[#3B82F6]/10 border border-[#3B82F6]/20 text-[#60A5FA]">
+                                Passed 2024
+                            </span>
+                            <span class="text-xs font-semibold text-[#3B82F6] bg-[#3B82F6]/10 px-3 py-1 rounded-full border border-[#3B82F6]/20">
+                                90% Score
+                            </span>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-[#F9FAFB] leading-snug">
+                            Class 12th (Higher Secondary Education)
+                        </h3>
+
+                        <p class="text-sm font-semibold text-[#3B82F6]">
+                            Govt. PM. Shri H.S. School, Bhopal
+                        </p>
+
+                        <p class="text-xs text-[#9CA3AF] leading-relaxed">
+                            Completed Higher Secondary Education in 2024, achieving a 90% academic score.
+                        </p>
+                    </div>
+
+                    <div class="pt-2 flex flex-wrap gap-2 text-xs">
+                        <span class="px-2.5 py-1 bg-[#08090D] border border-white/10 text-[#9CA3AF] rounded-md">Science Stream</span>
+                        <span class="px-2.5 py-1 bg-[#08090D] border border-white/10 text-[#9CA3AF] rounded-md">Mathematics & Physics</span>
+                    </div>
+                </div>
+
+                <!-- Secondary (Class 10th) Card -->
+                <div class="card-base p-8 relative border-l-4 border-l-[#3B82F6] space-y-4 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-semibold px-3.5 py-1 rounded-full bg-[#3B82F6]/10 border border-[#3B82F6]/20 text-[#60A5FA]">
+                                Passed 2022
+                            </span>
+                            <span class="text-xs font-semibold text-[#3B82F6] bg-[#3B82F6]/10 px-3 py-1 rounded-full border border-[#3B82F6]/20">
+                                91.2% Score
+                            </span>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-[#F9FAFB] leading-snug">
+                            Class 10th (Secondary Education)
+                        </h3>
+
+                        <p class="text-sm font-semibold text-[#3B82F6]">
+                            Govt. PM. Shri H.S. School, Bhopal
+                        </p>
+
+                        <p class="text-xs text-[#9CA3AF] leading-relaxed">
+                            Completed Secondary Education in 2022, achieving a 91.2% academic score.
+                        </p>
+                    </div>
+
+                    <div class="pt-2 flex flex-wrap gap-2 text-xs">
+                        <span class="px-2.5 py-1 bg-[#08090D] border border-white/10 text-[#9CA3AF] rounded-md">General Subjects</span>
+                        <span class="px-2.5 py-1 bg-[#08090D] border border-white/10 text-[#9CA3AF] rounded-md">Science & Maths</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: Skills -->
+    <section id="skills" class="py-24 px-6 section-bg-alt border-t border-white/5 relative z-10 overflow-hidden">
+        <!-- Ambient Background Glow Spotlights -->
+        <div class="absolute -top-24 left-1/4 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none"></div>
+        <div class="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-purple-600/10 rounded-full blur-[140px] pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto reveal-on-scroll relative z-10">
+            
+            <!-- Section Header & Subtitle -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#3B82F6]/10 border border-[#3B82F6]/25 text-[#60A5FA] text-xs font-semibold mb-3">
+                        <i class="fas fa-layer-group text-xs"></i> Tech Stack & Expertise
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-[#F9FAFB]">Technical Skills</h2>
+                    <p class="text-xs sm:text-sm text-[#9CA3AF] mt-1 max-w-xl">
+                        Programming languages, web frameworks, core computer science principles, and artificial intelligence integration.
+                    </p>
+                </div>
+
+                <!-- Interactive Category Filter Tabs -->
+                <div class="flex flex-wrap items-center gap-2">
+                    <button class="filter-btn active" data-filter="all"><i class="fas fa-grid-2 text-xs mr-1"></i> All Stack</button>
+                    <button class="filter-btn" data-filter="languages"><i class="fas fa-code text-xs mr-1"></i> Languages</button>
+                    <button class="filter-btn" data-filter="web"><i class="fas fa-globe text-xs mr-1"></i> Web Dev</button>
+                    <button class="filter-btn" data-filter="cs-ai"><i class="fas fa-brain text-xs mr-1"></i> CS & AI</button>
+                    <button class="filter-btn" data-filter="tools"><i class="fas fa-wrench text-xs mr-1"></i> Tools</button>
+                </div>
+            </div>
+
+            <!-- Bento Grid Layout -->
+            <div class="grid md:grid-cols-12 gap-6">
+                
+                <!-- Bento Item 1: Core Programming Languages & Progress Bars (Large Span: 7 Columns) -->
+                <div class="md:col-span-7 card-base p-8 space-y-6 flex flex-col justify-between border-t-2 border-t-[#FB923C] transition-all duration-300" data-skill-category="languages">
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-[#FB923C]/10 border border-[#FB923C]/30 flex items-center justify-center text-[#FB923C]">
+                                    <i class="fab fa-java text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-[#F9FAFB]">Programming Languages</h3>
+                                    <p class="text-xs text-[#9CA3AF]">Java (Primary Language) • C++ & C (Learnt)</p>
+                                </div>
+                            </div>
+                            <span class="text-xs font-bold px-3.5 py-1 rounded-full bg-[#FB923C]/15 text-[#FB923C] border border-[#FB923C]/30">Java Primary</span>
+                        </div>
+
+                        <!-- Skill Level Meter Bars -->
+                        <div class="space-y-4 pt-1">
+                            <!-- Java (Primary Main Language) -->
+                            <div class="space-y-1.5">
+                                <div class="flex justify-between text-xs font-semibold">
+                                    <span class="text-[#F9FAFB] flex items-center gap-2"><i class="fab fa-java text-[#FB923C]"></i> Java (Primary Language • OOP & NPTEL 95%)</span>
+                                    <span class="text-[#FB923C] font-bold">Primary</span>
+                                </div>
+                                <div class="skill-bar-track">
+                                    <div class="skill-bar-fill" style="width: 92%; background: linear-gradient(90deg, #FB923C 0%, #3B82F6 100%);"></div>
+                                </div>
+                            </div>
+
+                            <!-- JavaScript -->
+                            <div class="space-y-1.5">
+                                <div class="flex justify-between text-xs font-semibold">
+                                    <span class="text-[#F9FAFB] flex items-center gap-2"><i class="fab fa-js text-[#F7DF1E]"></i> JavaScript (Web Logic & ES6+)</span>
+                                    <span class="text-[#60A5FA]">Proficient</span>
+                                </div>
+                                <div class="skill-bar-track">
+                                    <div class="skill-bar-fill" style="width: 80%;"></div>
+                                </div>
+                            </div>
+
+                            <!-- C++ -->
+                            <div class="space-y-1.5">
+                                <div class="flex justify-between text-xs font-semibold">
+                                    <span class="text-[#F9FAFB] flex items-center gap-2"><i class="fas fa-code text-[#3B82F6]"></i> C++ (DSA & Problem Solving)</span>
+                                    <span class="text-[#9CA3AF]">Learnt</span>
+                                </div>
+                                <div class="skill-bar-track">
+                                    <div class="skill-bar-fill" style="width: 72%;"></div>
+                                </div>
+                            </div>
+
+                            <!-- C -->
+                            <div class="space-y-1.5">
+                                <div class="flex justify-between text-xs font-semibold">
+                                    <span class="text-[#F9FAFB] flex items-center gap-2"><i class="fas fa-code text-[#3B82F6]"></i> C (Procedural Programming)</span>
+                                    <span class="text-[#9CA3AF]">Learnt</span>
+                                </div>
+                                <div class="skill-bar-track">
+                                    <div class="skill-bar-fill" style="width: 70%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Brand Badges -->
+                        <div class="flex flex-wrap gap-2.5 pt-1">
+                            <span class="brand-badge brand-java"><i class="fab fa-java text-[#FB923C]"></i> Java (Main)</span>
+                            <span class="brand-badge brand-js"><i class="fab fa-js text-[#F7DF1E]"></i> JavaScript</span>
+                            <span class="brand-badge brand-cpp"><i class="fas fa-code text-[#60A5FA]"></i> C++ (Learnt)</span>
+                            <span class="brand-badge"><i class="fas fa-code text-[#3B82F6]"></i> C (Learnt)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bento Item 2: Artificial Intelligence Spotlight Card (5 Columns) -->
+                <div class="md:col-span-5 card-base p-8 space-y-6 flex flex-col justify-between border border-[#8B5CF6]/30 bg-gradient-to-br from-[#10121F] via-[#15102A] to-[#0A0C14] transition-all duration-300 shadow-[0_0_30px_rgba(139,92,246,0.12)]" data-skill-category="cs-ai">
+                    <div class="space-y-5">
+                        <div class="flex items-center justify-between">
+                            <div class="w-10 h-10 rounded-xl bg-[#8B5CF6]/15 border border-[#8B5CF6]/30 flex items-center justify-center text-[#C084FC] shadow-[0_0_15px_rgba(168,85,247,0.3)]">
+                                <i class="fas fa-sparkles text-lg"></i>
+                            </div>
+                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-[#8B5CF6]/15 text-[#C084FC] border border-[#8B5CF6]/30 animate-pulse">
+                                Innovation Focus
+                            </span>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-bold text-[#F9FAFB] flex items-center gap-2">
+                                AI & Generative Integration
+                            </h3>
+                            <p class="text-xs text-[#9CA3AF] mt-1 leading-relaxed">
+                                Building practical AI applications powered by Gemini API, medical scanners, and smart LLM workflows.
+                            </p>
+                        </div>
+
+                        <div class="space-y-2.5 pt-2">
+                            <div class="p-3 rounded-xl bg-white/[0.03] border border-white/10 flex items-center gap-3">
+                                <i class="fas fa-brain text-[#C084FC]"></i>
+                                <div>
+                                    <h4 class="text-xs font-bold text-[#F9FAFB]">Google Gemini API</h4>
+                                    <p class="text-[11px] text-[#9CA3AF]">Structured prompts, vision & text models</p>
+                                </div>
+                            </div>
+                            <div class="p-3 rounded-xl bg-white/[0.03] border border-white/10 flex items-center gap-3">
+                                <i class="fas fa-wand-magic-sparkles text-[#60A5FA]"></i>
+                                <div>
+                                    <h4 class="text-xs font-bold text-[#F9FAFB]">Generative AI Solutions</h4>
+                                    <p class="text-[11px] text-[#9CA3AF]">Integrated into MediScanner project</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2.5 pt-1">
+                            <span class="brand-badge brand-gemini"><i class="fas fa-sparkles text-[#C084FC]"></i> Gemini API</span>
+                            <span class="brand-badge brand-gemini"><i class="fas fa-robot text-[#C084FC]"></i> Generative AI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bento Item 3: Web Technologies (4 Columns) -->
+                <div class="md:col-span-4 card-base p-7 space-y-5 flex flex-col justify-between border-t-2 border-t-[#3B82F6] transition-all duration-300" data-skill-category="web">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-[#3B82F6]/10 border border-[#3B82F6]/20 flex items-center justify-center text-[#3B82F6]">
+                                <i class="fas fa-laptop-code text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-[#F9FAFB]">Web Stack</h3>
+                                <p class="text-xs text-[#9CA3AF]">Modern frontend tools</p>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2.5 pt-2">
+                            <span class="brand-badge brand-react"><i class="fab fa-react text-[#61DAFB] text-base"></i> React</span>
+                            <span class="brand-badge brand-ts"><i class="fas fa-code text-[#60A5FA] text-sm"></i> TypeScript</span>
+                            <span class="brand-badge brand-js"><i class="fab fa-js text-[#F7DF1E] text-base"></i> JavaScript</span>
+                            <span class="brand-badge brand-html"><i class="fab fa-html5 text-[#FB923C] text-base"></i> HTML5</span>
+                            <span class="brand-badge brand-css"><i class="fab fa-css3-alt text-[#60A5FA] text-base"></i> CSS3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bento Item 4: Core CS Fundamentals (4 Columns) -->
+                <div class="md:col-span-4 card-base p-7 space-y-5 flex flex-col justify-between border-t-2 border-t-[#3B82F6] transition-all duration-300" data-skill-category="cs-ai">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-[#3B82F6]/10 border border-[#3B82F6]/20 flex items-center justify-center text-[#3B82F6]">
+                                <i class="fas fa-cubes text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-[#F9FAFB]">Core CS Concepts</h3>
+                                <p class="text-xs text-[#9CA3AF]">Engineering foundations</p>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2.5 pt-2">
+                            <span class="brand-badge"><i class="fas fa-diagram-project text-[#3B82F6]"></i> DSA</span>
+                            <span class="brand-badge"><i class="fas fa-layer-group text-[#3B82F6]"></i> OOP</span>
+                            <span class="brand-badge"><i class="fas fa-boxes-stacked text-[#3B82F6]"></i> STL</span>
+                            <span class="brand-badge"><i class="fas fa-lightbulb text-[#3B82F6]"></i> Logic Building</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bento Item 5: Tools & Deployment (4 Columns) -->
+                <div class="md:col-span-4 card-base p-7 space-y-5 flex flex-col justify-between border-t-2 border-t-[#3B82F6] transition-all duration-300" data-skill-category="tools">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-[#3B82F6]/10 border border-[#3B82F6]/20 flex items-center justify-center text-[#3B82F6]">
+                                <i class="fas fa-wrench text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-[#F9FAFB]">Tools & Workflow</h3>
+                                <p class="text-xs text-[#9CA3AF]">Environment & deployment</p>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2.5 pt-2">
+                            <span class="brand-badge brand-git"><i class="fab fa-git-alt text-[#F87171] text-base"></i> Git</span>
+                            <span class="brand-badge"><i class="fab fa-github text-[#F9FAFB] text-base"></i> GitHub</span>
+                            <span class="brand-badge"><i class="fas fa-code text-[#60A5FA] text-base"></i> VS Code</span>
+                            <span class="brand-badge"><i class="fas fa-bolt text-[#60A5FA] text-base"></i> Vite</span>
+                            <span class="brand-badge"><i class="fas fa-globe text-[#60A5FA] text-base"></i> Netlify</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: Projects -->
+    <section id="projects" class="py-24 px-6 border-t border-white/5 relative z-10">
+        <div class="max-w-6xl mx-auto reveal-on-scroll">
+            <div class="flex items-center gap-3 mb-10">
+                <div class="w-10 h-10 rounded-xl bg-[#3B82F6]/10 border border-[#3B82F6]/20 flex items-center justify-center text-[#3B82F6]">
+                    <i class="fas fa-folder-open text-lg"></i>
+                </div>
+                <div>
+                    <h2 class="text-3xl font-bold text-[#F9FAFB]">Featured Projects</h2>
+                    <p class="text-xs text-[#9CA3AF]">Practical software applications, web tools, and AI solutions I've built</p>
+                </div>
+                <span class="h-0.5 flex-1 bg-white/10 ml-4"></span>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Project Card 1: MediScanner -->
+                <div class="card-base overflow-hidden flex flex-col justify-between group">
+                    <div>
+                        <!-- Project Screenshot Mobile Frame Container -->
+                        <div class="h-64 bg-gradient-to-b from-[#121626] to-[#08090D] border-b border-white/5 relative overflow-hidden flex items-center justify-center p-3 group-hover:border-[#3B82F6]/40 transition-colors">
+                            <img src="mediscanner.png" alt="MediScanner AI Medicine Identifier" class="max-h-full w-auto object-contain rounded-xl shadow-[0_10px_25px_rgba(0,0,0,0.7)] border border-white/10 group-hover:scale-105 group-hover:-translate-y-1 transition-all duration-500">
+                        </div>
+
+                        <div class="p-6 space-y-4">
+                            <h3 class="text-xl font-bold text-[#F9FAFB] group-hover:text-[#3B82F6] transition-colors">MediScanner</h3>
+                            
+                            <p class="text-xs text-[#9CA3AF] leading-relaxed">
+                                AI-powered medical scanning application utilizing generative AI for intelligent medicine and prescription analysis.
+                            </p>
+
+                            <div class="flex flex-wrap gap-1.5 text-[11px]">
+                                <span class="px-2.5 py-1 bg-[#08090D] border border-[#3B82F6]/20 text-[#60A5FA] rounded-md font-medium">React</span>
+                                <span class="px-2.5 py-1 bg-[#08090D] border border-[#3B82F6]/20 text-[#60A5FA] rounded-md font-medium">Gemini API</span>
+                                <span class="px-2.5 py-1 bg-[#08090D] border border-[#3B82F6]/20 text-[#60A5FA] rounded-md font-medium">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="p-6 pt-0 flex items-center gap-3">
+                        <a href="https://github.com/Newengineer280705/MedicineScanner.git" target="_blank" rel="noopener noreferrer" class="flex-1 py-2 px-3 rounded-lg border border-white/10 bg-[#08090D] hover:border-[#3B82F6] hover:text-[#60A5FA] text-xs font-semibold text-[#F9FAFB] text-center transition-colors inline-flex items-center justify-center gap-1.5">
+                            <i class="fab fa-github text-sm"></i> GitHub
+                        </a>
+                        <a href="https://startling-choux-88c463.netlify.app/" target="_blank" rel="noopener noreferrer" class="flex-1 py-2 px-3 rounded-lg bg-[#3B82F6] hover:bg-[#2563EB] text-white text-xs font-bold text-center transition-all inline-flex items-center justify-center gap-1.5">
+                            <i class="fas fa-external-link-alt text-xs"></i> Live Demo
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project Card 2: QR Code Generator -->
+                <div class="card-base overflow-hidden flex flex-col justify-between group">
+                    <div>
+                        <!-- Project Screenshot Mobile Frame Container -->
+                        <div class="h-64 bg-gradient-to-b from-[#121626] to-[#08090D] border-b border-white/5 relative overflow-hidden flex items-center justify-center p-3 group-hover:border-[#3B82F6]/40 transition-colors">
+                            <img src="qrcode.png" alt="QR Code Generator Project" class="max-h-full w-auto object-contain rounded-xl shadow-[0_10px_25px_rgba(0,0,0,0.7)] border border-white/10 group-hover:scale-105 group-hover:-translate-y-1 transition-all duration-500">
+                        </div>
+
+                        <div class="p-6 space-y-4">
+                            <h3 class="text-xl font-bold text-[#F9FAFB] group-hover:text-[#3B82F6] transition-colors">QR Code Generator</h3>
+                            
+                            <p class="text-xs text-[#9CA3AF] leading-relaxed">
+                                Fast and responsive web utility application for generating custom downloadable QR codes for URLs, text, and data.
+                            </p>
+
+                            <div class="flex flex-wrap gap-1.5 text-[11px]">
+                                <span class="px-2.5 py-1 bg-[#08090D] border border-[#3B82F6]/20 text-[#60A5FA] rounded-md font-medium">HTML</span>
+                                <span class="px-2.5 py-1 bg-[#08090D] border border-[#3B82F6]/20 text-[#60A5FA] rounded-md font-medium">CSS</span>
+                                <span class="px-2.5 py-1 bg-[#08090D] border border-[#3B82F6]/20 text-[#60A5FA] rounded-md font-medium">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="p-6 pt-0 flex items-center gap-3">
+                        <a href="https://github.com/Newengineer280705" target="_blank" rel="noopener noreferrer" class="flex-1 py-2 px-3 rounded-lg border border-white/10 bg-[#08090D] hover:border-[#3B82F6] hover:text-[#60A5FA] text-xs font-semibold text-[#F9FAFB] text-center transition-colors inline-flex items-center justify-center gap-1.5">
+                            <i class="fab fa-github text-sm"></i> GitHub
+                        </a>
+                        <a href="https://glistening-bombolone-e4f698.netlify.app/" target="_blank" rel="noopener noreferrer" class="flex-1 py-2 px-3 rounded-lg bg-[#3B82F6] hover:bg-[#2563EB] text-white text-xs font-bold text-center transition-all inline-flex items-center justify-center gap-1.5">
+                            <i class="fas fa-external-link-alt text-xs"></i> Live Demo
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project Card 3: Feedback Loop (Work In Progress) -->
+                <div class="card-base overflow-hidden flex flex-col justify-between group relative border-amber-500/20">
+                    <div>
+                        <!-- Image / Screenshot Placeholder Container with Work In Progress Badge -->
+                        <div class="h-64 bg-gradient-to-b from-[#121626] to-[#08090D] border-b border-white/5 relative overflow-hidden flex flex-col items-center justify-center p-3 group-hover:border-amber-500/40 transition-colors">
+                            <span class="absolute top-3 right-3 px-3 py-1 text-[11px] font-bold rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-400 flex items-center gap-1.5 backdrop-blur-md z-10">
+                                <span class="relative flex h-2 w-2">
+                                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                                  <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-400"></span>
+                                </span>
+                                In Development
+                            </span>
+
+                            <div class="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 mb-3 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-hammer text-2xl animate-pulse"></i>
+                            </div>
+                            <span class="text-xs font-mono text-amber-400 font-semibold uppercase tracking-wider">Work In Progress</span>
+                            <span class="text-[11px] text-[#9CA3AF] mt-1">Launching Soon</span>
+                        </div>
+
+                        <div class="p-6 space-y-4">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-xl font-bold text-[#F9FAFB] group-hover:text-amber-400 transition-colors">Feedback Loop</h3>
+                                <span class="text-[10px] font-bold px-2.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">WIP</span>
+                            </div>
+                            
+                            <p class="text-xs text-[#9CA3AF] leading-relaxed">
+                                Interactive web platform designed to seamlessly collect, process, and analyze user feedback and review metrics. Currently in active development.
+                            </p>
+
+                            <div class="flex flex-wrap gap-1.5 text-[11px]">
+                                <span class="px-2.5 py-1 bg-[#08090D] border border-amber-500/20 text-amber-300 rounded-md font-medium">React</span>
+                                <span class="px-2.5 py-1 bg-[#08090D] border border-amber-500/20 text-amber-300 rounded-md font-medium">TypeScript</span>
+                                <span class="px-2.5 py-1 bg-[#08090D] border border-amber-500/20 text-amber-300 rounded-md font-medium">CSS</span>
+                                <span class="px-2.5 py-1 bg-[#08090D] border border-amber-500/20 text-amber-300 rounded-md font-medium">Netlify</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="p-6 pt-0 flex items-center gap-3">
+                        <a href="https://github.com/Newengineer280705" target="_blank" rel="noopener noreferrer" class="flex-1 py-2 px-3 rounded-lg border border-white/10 bg-[#08090D] hover:border-amber-500/50 hover:text-amber-300 text-xs font-semibold text-[#F9FAFB] text-center transition-colors inline-flex items-center justify-center gap-1.5">
+                            <i class="fab fa-github text-sm"></i> GitHub
+                        </a>
+                        <span class="flex-1 py-2 px-3 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-bold text-center inline-flex items-center justify-center gap-1.5 cursor-not-allowed opacity-90">
+                            <i class="fas fa-clock text-xs"></i> Coming Soon
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: Achievements & Awards Showcase -->
+    <section id="achievements" class="py-24 px-6 section-bg-alt border-t border-white/5 relative z-10 overflow-hidden">
+        <!-- Ambient Background Gold Glow -->
+        <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-amber-500/10 rounded-full blur-[150px] pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto reveal-on-scroll relative z-10">
+            <div class="flex items-center gap-3 mb-12">
+                <div class="w-11 h-11 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 shadow-[0_0_20px_rgba(234,179,8,0.25)]">
+                    <i class="fas fa-trophy text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-[#F9FAFB]">Achievements & Awards</h2>
+                    <p class="text-xs sm:text-sm text-[#9CA3AF] mt-0.5">National honors, government recognitions, and competitive milestones</p>
+                </div>
+                <span class="h-0.5 flex-1 bg-gradient-to-r from-amber-500/30 to-transparent ml-4 hidden sm:block"></span>
+            </div>
+
+            <!-- Golden Hero Winner Card -->
+            <div class="gold-glow-card rounded-2xl p-8 sm:p-10 border border-amber-500/30 relative overflow-hidden transition-all duration-300">
+                <div class="grid md:grid-cols-12 gap-8 items-center">
+                    
+                    <!-- Left Details Column (7 Cols) -->
+                    <div class="md:col-span-7 space-y-6">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="gold-badge">
+                                <i class="fas fa-award text-amber-400"></i> National Super 100 Winner
+                            </span>
+                            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300">
+                                1 Crore (10 Million) Candidates
+                            </span>
+                        </div>
+
+                        <div class="space-y-2">
+                            <h3 class="text-2xl sm:text-3xl font-extrabold text-[#F9FAFB] leading-tight">
+                                Super 100 National Winner – <span class="text-amber-400">VeerGatha 3.0</span>
+                            </h3>
+                            <p class="text-xs sm:text-sm font-semibold text-amber-300">
+                                Organized by Ministry of Defence & Ministry of Education, Government of India
+                            </p>
+                        </div>
+
+                        <p class="text-xs sm:text-sm text-[#9CA3AF] leading-relaxed">
+                            Selected as a <strong class="text-amber-300">National Super 100 Winner</strong> among <strong class="text-[#F9FAFB]">1 Crore (10 Million) students</strong> across 2.5 Lakh schools in India. Honored at New Delhi during Republic Day 2024 celebrations with a national medal and ₹10,000 cash award by Raksha Mantri Shri Rajnath Singh and Education Minister Shri Dharmendra Pradhan.
+                        </p>
+
+                        <!-- Key Highlight Badges -->
+                        <div class="flex flex-wrap gap-2.5 pt-1 text-xs">
+                            <span class="px-3 py-1.5 bg-[#08090D] border border-amber-500/20 text-amber-300 rounded-lg font-medium flex items-center gap-1.5">
+                                <i class="fas fa-landmark text-amber-400"></i> Ministry of Defence
+                            </span>
+                            <span class="px-3 py-1.5 bg-[#08090D] border border-amber-500/20 text-amber-300 rounded-lg font-medium flex items-center gap-1.5">
+                                <i class="fas fa-building-columns text-amber-400"></i> Ministry of Education
+                            </span>
+                            <span class="px-3 py-1.5 bg-[#08090D] border border-amber-500/20 text-amber-300 rounded-lg font-medium flex items-center gap-1.5">
+                                <i class="fas fa-newspaper text-amber-400"></i> Press & News Coverage
+                            </span>
+                        </div>
+
+                        <!-- Interactive Certificate View Trigger Button -->
+                        <div class="pt-3 flex flex-wrap gap-3">
+                            <button data-cert-modal data-cert-src="veergatha_cert.jpg" data-cert-title="Official Certificate - VeerGatha 3.0 (Govt. of India)" data-cert-desc="National Super 100 Winner Certificate issued by Ministry of Defence & Ministry of Education, Government of India." class="btn-blue-primary text-xs py-3 px-6 font-bold gap-2 shadow-[0_0_20px_rgba(59,130,246,0.35)] cursor-pointer">
+                                <i class="fas fa-certificate text-sm"></i> View Official Certificate
+                            </button>
+                            <button data-cert-modal data-cert-src="veergatha_ceremony.jpg" data-cert-title="Award Ceremony with Defence Minister Shri Rajnath Singh" data-cert-desc="Stage award distribution ceremony with Raksha Mantri Shri Rajnath Singh and Education Minister Shri Dharmendra Pradhan." class="btn-outline-secondary text-xs py-3 px-5 font-semibold gap-2 border-amber-500/30 text-amber-300 hover:bg-amber-500/10 cursor-pointer">
+                                <i class="fas fa-camera text-sm"></i> Stage Ceremony Photo
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Perfectly Bounded Certificate Frame & Sliding Event Photo Gallery -->
+                    <div class="md:col-span-5 space-y-3.5">
+                        <!-- Main Certificate Frame (Bounded Height, Uncropped Fit) -->
+                        <div data-cert-modal data-cert-src="veergatha_cert.jpg" data-cert-title="Official Certificate - VeerGatha 3.0 (Govt. of India)" data-cert-desc="National Super 100 Winner Certificate issued by Ministry of Defence & Ministry of Education, Government of India." class="rounded-xl border border-amber-500/40 bg-[#08090D] shadow-2xl relative group cursor-pointer p-2 hover:border-amber-400/70 transition-all duration-300 overflow-hidden flex items-center justify-center h-64 sm:h-72 lg:h-80">
+                            <img src="veergatha_cert.jpg" alt="VeerGatha 3.0 National Super 100 Certificate" class="max-h-full max-w-full w-auto h-auto rounded-lg object-contain block group-hover:scale-105 transition-transform duration-300 shadow-md">
+                            <!-- Lightbox Click Overlay Hint -->
+                            <div class="absolute inset-0 bg-amber-950/30 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-1.5 backdrop-blur-xs z-10 p-3 text-center rounded-lg">
+                                <i class="fas fa-magnifying-glass-plus text-2xl text-amber-300 group-hover:scale-110 transition-transform"></i>
+                                <span class="text-[11px] font-bold text-white uppercase tracking-wider bg-black/80 px-3.5 py-1.5 rounded-full border border-amber-500/40 shadow-lg">Click to Enlarge Full Certificate</span>
+                            </div>
+                        </div>
+
+                        <!-- Auto-Sliding Event Photo Gallery Carousel -->
+                        <div class="achievement-slider-container relative group rounded-xl border border-amber-500/30 overflow-hidden bg-[#08090D] shadow-lg">
+                            <!-- Slider Control Header Bar -->
+                            <div class="px-3.5 py-2 bg-[#0A0C14] border-b border-amber-500/20 flex items-center justify-between z-10 relative">
+                                <span class="text-xs font-semibold text-amber-300 flex items-center gap-1.5">
+                                    <i class="fas fa-images text-amber-400"></i> Event Highlights
+                                </span>
+                                <!-- Pagination Dots -->
+                                <div id="slider-dots" class="flex items-center gap-1.5"></div>
+                            </div>
+
+                            <div class="relative">
+                                <div id="achievement-slider-track" class="achievement-slider-track">
+                                    <!-- Slide 1: Stage Ceremony -->
+                                    <div data-cert-modal data-cert-src="veergatha_ceremony.jpg" data-cert-title="Award Ceremony with Defence Minister Shri Rajnath Singh" data-cert-desc="Stage award distribution ceremony with Raksha Mantri Shri Rajnath Singh and Education Minister Shri Dharmendra Pradhan at New Delhi." class="achievement-slide">
+                                        <img src="veergatha_ceremony.jpg" alt="Stage Award Ceremony">
+                                        <div class="absolute bottom-2 left-2 bg-black/85 backdrop-blur-xs border border-amber-500/30 text-amber-300 text-[11px] font-semibold px-2.5 py-1 rounded-md z-10 flex items-center gap-1.5 shadow-md">
+                                            <i class="fas fa-camera text-amber-400"></i> Stage Ceremony @ New Delhi
+                                        </div>
+                                    </div>
+
+                                    <!-- Slide 2: Newspaper Coverage -->
+                                    <div data-cert-modal data-cert-src="veergatha_news.png" data-cert-title="National Newspaper Coverage" data-cert-desc="Featured newspaper interview coverage highlighting Super 100 National Winner achievement." class="achievement-slide">
+                                        <img src="veergatha_news.png" alt="Newspaper Coverage">
+                                        <div class="absolute bottom-2 left-2 bg-black/85 backdrop-blur-xs border border-amber-500/30 text-amber-300 text-[11px] font-semibold px-2.5 py-1 rounded-md z-10 flex items-center gap-1.5 shadow-md">
+                                            <i class="fas fa-newspaper text-amber-400"></i> National Press Feature
+                                        </div>
+                                    </div>
+
+                                    <!-- Slide 3: Winner Portrait -->
+                                    <div data-cert-modal data-cert-src="veergatha_portrait.jpg" data-cert-title="Super 100 Winner Portrait - New Delhi" data-cert-desc="Official photo at New Delhi during Republic Day 2024 celebrations." class="achievement-slide">
+                                        <img src="veergatha_portrait.jpg" alt="Winner Portrait">
+                                        <div class="absolute bottom-2 left-2 bg-black/85 backdrop-blur-xs border border-amber-500/30 text-amber-300 text-[11px] font-semibold px-2.5 py-1 rounded-md z-10 flex items-center gap-1.5 shadow-md">
+                                            <i class="fas fa-user-tie text-amber-400"></i> Winner Portrait @ New Delhi
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Carousel Navigation Buttons -->
+                                <button id="slider-prev" class="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black/70 hover:bg-amber-500 border border-amber-500/40 text-white flex items-center justify-center text-[10px] transition-colors backdrop-blur-xs z-20 cursor-pointer shadow-md">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <button id="slider-next" class="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black/70 hover:bg-amber-500 border border-amber-500/40 text-white flex items-center justify-center text-[10px] transition-colors backdrop-blur-xs z-20 cursor-pointer shadow-md">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: Certifications -->
+    <section id="certifications" class="py-24 px-6 border-t border-white/5 relative z-10">
+        <div class="max-w-6xl mx-auto reveal-on-scroll">
+            <div class="flex items-center gap-3 mb-10">
+                <div class="w-10 h-10 rounded-xl bg-[#3B82F6]/10 border border-[#3B82F6]/20 flex items-center justify-center text-[#3B82F6]">
+                    <i class="fas fa-certificate text-lg"></i>
+                </div>
+                <div>
+                    <h2 class="text-3xl font-bold text-[#F9FAFB]">Certifications</h2>
+                    <p class="text-xs text-[#9CA3AF]">Verified credentials and specialized courses</p>
+                </div>
+                <span class="h-0.5 flex-1 bg-white/10 ml-4"></span>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Cert 1: NPTEL -->
+                <div class="card-base p-6 flex flex-col justify-between space-y-4 border-t-2 border-t-[#3B82F6]/60 group">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div class="w-9 h-9 rounded-lg bg-[#3B82F6]/10 flex items-center justify-center text-[#3B82F6]">
+                                <i class="fab fa-java"></i>
+                            </div>
+                            <span class="text-xs font-semibold px-2.5 py-1 rounded bg-[#3B82F6]/10 border border-[#3B82F6]/20 text-[#60A5FA]">
+                                95% Score
+                            </span>
+                        </div>
+                        <h3 class="text-base font-bold text-[#F9FAFB] group-hover:text-[#3B82F6] transition-colors">
+                            NPTEL – Programming in Java
+                        </h3>
+                        <p class="text-xs text-[#9CA3AF]">Certified in Core Java & Programming with a 95% score.</p>
+                    </div>
+                    <!-- certificateUrl: "#" -->
+                    <a href="NPTELjava.jpeg" target="_blank" class="text-xs font-semibold text-[#3B82F6] hover:text-[#60A5FA] transition-colors inline-flex items-center gap-1.5 pt-2">
+                        <i class="fas fa-arrow-up-right-from-square text-[10px]"></i> View Certificate
+                    </a>
+                </div>
+
+                <!-- Cert 2: Cisco -->
+                <div class="card-base p-6 flex flex-col justify-between space-y-4 border-t-2 border-t-[#3B82F6]/60 group">
+                    <div class="space-y-3">
+                        <div class="w-9 h-9 rounded-lg bg-[#3B82F6]/10 flex items-center justify-center text-[#3B82F6]">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-[#F9FAFB] group-hover:text-[#3B82F6] transition-colors">
+                            Cisco Networking Certificate
+                        </h3>
+                        <p class="text-xs text-[#9CA3AF]">Networking fundamentals & communication protocols.</p>
+                    </div>
+                    <!-- certificateUrl: "#" -->
+                    <a href="#" target="_blank" class="text-xs font-semibold text-[#3B82F6] hover:text-[#60A5FA] transition-colors inline-flex items-center gap-1.5 pt-2">
+                        <i class="fas fa-arrow-up-right-from-square text-[10px]"></i> View Certificate
+                    </a>
+                </div>
+
+                <!-- Cert 3: Intro to Modern AI -->
+                <div class="card-base p-6 flex flex-col justify-between space-y-4 border-t-2 border-t-[#3B82F6]/60 group">
+                    <div class="space-y-3">
+                        <div class="w-9 h-9 rounded-lg bg-[#3B82F6]/10 flex items-center justify-center text-[#3B82F6]">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-[#F9FAFB] group-hover:text-[#3B82F6] transition-colors">
+                            Introduction to Modern AI
+                        </h3>
+                        <p class="text-xs text-[#9CA3AF]">Modern artificial intelligence concepts & applications.</p>
+                    </div>
+                    <!-- certificateUrl: "#" -->
+                    <a href="Introduction of modern Ai.pdf" target="_blank" class="text-xs font-semibold text-[#3B82F6] hover:text-[#60A5FA] transition-colors inline-flex items-center gap-1.5 pt-2">
+                        <i class="fas fa-arrow-up-right-from-square text-[10px]"></i> View Certificate
+                    </a>
+                </div>
+
+                <!-- Cert 4: Analyst Customer Review -->
+                <div class="card-base p-6 flex flex-col justify-between space-y-4 border-t-2 border-t-[#3B82F6]/60 group">
+                    <div class="space-y-3">
+                        <div class="w-9 h-9 rounded-lg bg-[#3B82F6]/10 flex items-center justify-center text-[#3B82F6]">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-[#F9FAFB] group-hover:text-[#3B82F6] transition-colors">
+                            Analyst Customer Review
+                        </h3>
+                        <p class="text-xs text-[#9CA3AF]">Customer feedback analysis & data evaluation.</p>
+                    </div>
+                    <!-- certificateUrl: "#" -->
+                    <a href="customer reviews.pdf" target="_blank" class="text-xs font-semibold text-[#3B82F6] hover:text-[#60A5FA] transition-colors inline-flex items-center gap-1.5 pt-2">
+                        <i class="fas fa-arrow-up-right-from-square text-[10px]"></i> View Certificate
+                    </a>
+                </div>
+
+                <!-- Cert 5: Data Analytics Essentials -->
+                <div class="card-base p-6 flex flex-col justify-between space-y-4 border-t-2 border-t-[#3B82F6]/60 group">
+                    <div class="space-y-3">
+                        <div class="w-9 h-9 rounded-lg bg-[#3B82F6]/10 flex items-center justify-center text-[#3B82F6]">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-[#F9FAFB] group-hover:text-[#3B82F6] transition-colors">
+                            Data Analytics Essentials
+                        </h3>
+                        <p class="text-xs text-[#9CA3AF]">Data analytics principles & visualization tools.</p>
+                    </div>
+                    <!-- certificateUrl: "#" -->
+                    <a href="Data Essential.pdf" target="_blank" class="text-xs font-semibold text-[#3B82F6] hover:text-[#60A5FA] transition-colors inline-flex items-center gap-1.5 pt-2">
+                        <i class="fas fa-arrow-up-right-from-square text-[10px]"></i> View Certificate
+                    </a>
+                </div>
+
+                <!-- Cert 6: TCS iON Career Edge -->
+                <div class="card-base p-6 flex flex-col justify-between space-y-4 border-t-2 border-t-[#3B82F6]/60 group">
+                    <div class="space-y-3">
+                        <div class="w-9 h-9 rounded-lg bg-[#3B82F6]/10 flex items-center justify-center text-[#3B82F6]">
+                            <i class="fas fa-user-gear"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-[#F9FAFB] group-hover:text-[#3B82F6] transition-colors">
+                            TCS iON Career Edge – Young Professional
+                        </h3>
+                        <p class="text-xs text-[#9CA3AF]">Professional readiness & soft skills certification.</p>
+                    </div>
+                    <!-- certificateUrl: "#" -->
+                    <a href="tcsYoung.jpeg" target="_blank" class="text-xs font-semibold text-[#3B82F6] hover:text-[#60A5FA] transition-colors inline-flex items-center gap-1.5 pt-2">
+                        <i class="fas fa-arrow-up-right-from-square text-[10px]"></i> View Certificate
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 9: Contact -->
+    <footer id="contact" class="py-20 px-6 border-t border-white/5 section-bg-alt relative z-10">
+        <div class="max-w-5xl mx-auto reveal-on-scroll">
+            
+            <div class="text-center max-w-xl mx-auto mb-12 space-y-3">
+                <h2 class="text-3xl font-bold text-[#F9FAFB]">Get In Touch</h2>
+                <p class="text-sm text-[#9CA3AF]">
+                    Feel free to reach out for software engineering internships, project collaborations, or technical opportunities.
+                </p>
+            </div>
+
+            <!-- Contact Grid Cards -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <!-- Email Card -->
+                <a href="mailto:arjun101jadone@gmail.com" class="card-base p-6 flex flex-col items-center text-center space-y-3 group">
+                    <div class="w-12 h-12 rounded-xl bg-[#3B82F6]/10 border border-[#3B82F6]/20 flex items-center justify-center text-[#3B82F6] text-xl group-hover:scale-110 transition-transform">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-[#F9FAFB]">Email</span>
+                    <span class="text-[11px] text-[#9CA3AF] group-hover:text-[#60A5FA] transition-colors break-all">arjun101jadone@gmail.com</span>
+                </a>
+
+                <!-- LinkedIn Card -->
+                <a href="https://www.linkedin.com/in/arjun-singh-jadon-649619333" target="_blank" rel="noopener noreferrer" class="card-base p-6 flex flex-col items-center text-center space-y-3 group">
+                    <div class="w-12 h-12 rounded-xl bg-[#3B82F6]/10 border border-[#3B82F6]/20 flex items-center justify-center text-[#3B82F6] text-xl group-hover:scale-110 transition-transform">
+                        <i class="fab fa-linkedin-in"></i>
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-[#F9FAFB]">LinkedIn</span>
+                    <span class="text-[11px] text-[#9CA3AF] group-hover:text-[#60A5FA] transition-colors">arjun-singh-jadon</span>
+                </a>
+
+                <!-- GitHub Card -->
+                <a href="https://github.com/Newengineer280705" target="_blank" rel="noopener noreferrer" class="card-base p-6 flex flex-col items-center text-center space-y-3 group">
+                    <div class="w-12 h-12 rounded-xl bg-[#3B82F6]/10 border border-[#3B82F6]/20 flex items-center justify-center text-[#3B82F6] text-xl group-hover:scale-110 transition-transform">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-[#F9FAFB]">GitHub</span>
+                    <span class="text-[11px] text-[#9CA3AF] group-hover:text-[#60A5FA] transition-colors">Newengineer280705</span>
+                </a>
+
+                <!-- Resume Download Card -->
+                <a href="resume.pdf" download target="_blank" rel="noopener noreferrer" class="card-base p-6 flex flex-col items-center text-center space-y-3 group">
+                    <div class="w-12 h-12 rounded-xl bg-[#3B82F6]/10 border border-[#3B82F6]/20 flex items-center justify-center text-[#3B82F6] text-xl group-hover:scale-110 transition-transform">
+                        <i class="fas fa-file-arrow-down"></i>
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-[#F9FAFB]">Resume</span>
+                    <span class="text-[11px] text-[#9CA3AF] group-hover:text-[#60A5FA] transition-colors">Download PDF</span>
+                </a>
+            </div>
+
+            <div class="border-t border-white/5 pt-8 text-center">
+                <p class="text-xs text-[#9CA3AF]/70">© 2026 Arjun Singh Jadon. All rights reserved.</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Lightbox Certificate Modal -->
+    <div id="cert-modal" class="lightbox-overlay">
+        <div class="lightbox-content">
+            <div class="flex items-center justify-between p-5 border-b border-white/10 bg-[#0E1017]">
+                <div>
+                    <h3 id="modal-title" class="text-lg font-bold text-[#F9FAFB]">Certificate Viewer</h3>
+                    <p id="modal-desc" class="text-xs text-[#9CA3AF]">Official Recognition & Credential</p>
+                </div>
+                <button id="modal-close" class="w-9 h-9 rounded-lg bg-white/10 hover:bg-white/20 text-[#F9FAFB] flex items-center justify-center transition-colors">
+                    <i class="fas fa-xmark text-lg"></i>
+                </button>
+            </div>
+            <div class="p-6 flex items-center justify-center min-h-[300px] bg-[#08090D] overflow-auto">
+                <img id="modal-img" src="" alt="Certificate Preview" class="max-h-[70vh] max-w-full object-contain rounded-lg shadow-2xl border border-white/10">
+            </div>
+        </div>
+    </div>
+
+    <!-- Three.js CDN Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Custom App Script -->
+    <script src="app.js"></script>
+</body>
+</html>

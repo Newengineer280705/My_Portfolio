@@ -1,0 +1,448 @@
+/* Personal Student Developer Portfolio - Dark + Glassmorphism & Ambient Glow Theme */
+:root {
+    --bg-primary: #08090D;        /* Deep Charcoal Black */
+    --bg-secondary: #0B0D14;      /* Dark Section Background */
+    --bg-card: rgba(16, 19, 30, 0.75); /* Modern Refined Dark Glass Card BG */
+    --bg-card-hover: rgba(22, 27, 42, 0.85); /* Elevated Hover State */
+    --text-primary: #F9FAFB;      /* Off-White Primary Typography */
+    --text-secondary: #9CA3AF;    /* Muted Slate Gray */
+    --accent-blue: #3B82F6;       /* Electric Blue Accent */
+    --accent-blue-hover: #2563EB; /* Deep Electric Blue */
+    --accent-blue-light: #60A5FA; /* Bright Electric Blue Highlight */
+    --accent-blue-glow: rgba(59, 130, 246, 0.25);
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-hover: rgba(59, 130, 246, 0.45);
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-blue) var(--bg-primary);
+    overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+    background: #1e293b;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-blue);
+}
+
+/* Sticky Glass Navbar */
+.nav-sticky {
+    background-color: rgba(8, 9, 13, 0.82);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.hero-radial-bg {
+    position: relative;
+    background: radial-gradient(circle at 75% 25%, rgba(59, 130, 246, 0.12) 0%, transparent 65%);
+}
+
+.section-bg-alt {
+    background-color: var(--bg-secondary);
+}
+
+/* Glassmorphism & Card Component Design */
+.card-base {
+    position: relative;
+    background: linear-gradient(145deg, rgba(17, 20, 31, 0.8) 0%, rgba(11, 13, 21, 0.85) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 1.25rem;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-base:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.8), 0 0 35px rgba(59, 130, 246, 0.18);
+}
+
+/* Vibrant Tech Skill Pills */
+.tech-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 0.95rem;
+    background: rgba(6, 8, 14, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.65rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #E2E8F0;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tech-pill:hover {
+    border-color: rgba(59, 130, 246, 0.5);
+    background: rgba(59, 130, 246, 0.12);
+    color: #60A5FA;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.2);
+}
+
+/* Gradient Text Typography */
+.gradient-text {
+    background: linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 40%, #60A5FA 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.gradient-accent-text {
+    background: linear-gradient(135deg, #60A5FA 0%, #3B82F6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Floating Profile Ring Animation */
+@keyframes float3D {
+    0%, 100% {
+        transform: translateY(0px);
+        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.8), 0 0 35px rgba(59, 130, 246, 0.25);
+    }
+    50% {
+        transform: translateY(-10px);
+        box-shadow: 0 30px 50px -12px rgba(0, 0, 0, 0.9), 0 0 50px rgba(59, 130, 246, 0.4);
+    }
+}
+
+.profile-gradient-container {
+    position: relative;
+    padding: 5px;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.8) 0%, rgba(255, 255, 255, 0.15) 100%);
+    animation: float3D 6s ease-in-out infinite;
+    transition: all 0.4s ease;
+}
+
+.profile-gradient-container:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 60px rgba(59, 130, 246, 0.5);
+}
+
+/* Buttons */
+.btn-blue-primary {
+    background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+    color: #FFFFFF;
+    font-weight: 700;
+    padding: 0.85rem 1.9rem;
+    border-radius: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.35);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-blue-primary:hover {
+    background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 28px rgba(59, 130, 246, 0.55);
+}
+
+.btn-outline-secondary {
+    background-color: rgba(14, 16, 23, 0.7);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+    font-weight: 600;
+    padding: 0.85rem 1.9rem;
+    border-radius: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-outline-secondary:hover {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue-light);
+    background-color: rgba(59, 130, 246, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Social Buttons */
+.social-btn-modern {
+    width: 44px;
+    height: 44px;
+    border-radius: 0.75rem;
+    background-color: rgba(20, 23, 34, 0.8);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    transition: all 0.3s ease;
+}
+
+.social-btn-modern:hover {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue-light);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.35);
+    transform: translateY(-3px);
+}
+
+/* Status Badge */
+.badge-code {
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    color: var(--accent-blue-light);
+    border-radius: 9999px;
+    padding: 0.4rem 1.1rem;
+    font-size: 0.825rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    backdrop-filter: blur(8px);
+}
+
+/* Nav Link Hover Lines */
+.nav-link-modern {
+    position: relative;
+}
+
+.nav-link-modern::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--accent-blue);
+    transition: width 0.3s ease;
+}
+
+.nav-link-modern:hover::after {
+    width: 100%;
+}
+
+/* Brand-specific Glowing Skill Badges */
+.brand-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.55rem 1.1rem;
+    border-radius: 0.75rem;
+    font-size: 0.825rem;
+    font-weight: 600;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(14, 17, 27, 0.75);
+    color: #F3F4F6;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.brand-badge:hover {
+    transform: translateY(-3px) scale(1.02);
+}
+
+/* Tech Brand Icon Colors & Glowing States */
+.brand-js:hover {
+    border-color: rgba(247, 223, 30, 0.6);
+    background: rgba(247, 223, 30, 0.08);
+    color: #F7DF1E;
+    box-shadow: 0 0 20px rgba(247, 223, 30, 0.25);
+}
+.brand-react:hover {
+    border-color: rgba(97, 218, 251, 0.6);
+    background: rgba(97, 218, 251, 0.08);
+    color: #61DAFB;
+    box-shadow: 0 0 20px rgba(97, 218, 251, 0.25);
+}
+.brand-cpp:hover {
+    border-color: rgba(0, 89, 156, 0.7);
+    background: rgba(0, 89, 156, 0.12);
+    color: #60A5FA;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+.brand-java:hover {
+    border-color: rgba(237, 139, 0, 0.6);
+    background: rgba(237, 139, 0, 0.08);
+    color: #FB923C;
+    box-shadow: 0 0 20px rgba(237, 139, 0, 0.25);
+}
+.brand-gemini:hover {
+    border-color: rgba(168, 85, 247, 0.6);
+    background: rgba(168, 85, 247, 0.08);
+    color: #C084FC;
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+}
+.brand-git:hover {
+    border-color: rgba(239, 68, 68, 0.6);
+    background: rgba(239, 68, 68, 0.08);
+    color: #F87171;
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.25);
+}
+.brand-html:hover {
+    border-color: rgba(249, 115, 22, 0.6);
+    background: rgba(249, 115, 22, 0.08);
+    color: #FB923C;
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.25);
+}
+.brand-css:hover {
+    border-color: rgba(59, 130, 246, 0.6);
+    background: rgba(59, 130, 246, 0.08);
+    color: #60A5FA;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.25);
+}
+.brand-ts:hover {
+    border-color: rgba(49, 120, 198, 0.6);
+    background: rgba(49, 120, 198, 0.08);
+    color: #60A5FA;
+    box-shadow: 0 0 20px rgba(49, 120, 198, 0.25);
+}
+
+/* Skill Progress Meter Bar */
+.skill-bar-track {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 9999px;
+    overflow: hidden;
+}
+.skill-bar-fill {
+    height: 100%;
+    border-radius: 9999px;
+    background: linear-gradient(90deg, #3B82F6 0%, #60A5FA 100%);
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+    transition: width 1s ease-out;
+}
+
+/* Category Filter Tabs */
+.filter-btn {
+    padding: 0.55rem 1.35rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(14, 16, 23, 0.7);
+    color: #9CA3AF;
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+.filter-btn:hover {
+    color: #F9FAFB;
+    border-color: rgba(59, 130, 246, 0.4);
+    background: rgba(59, 130, 246, 0.08);
+}
+.filter-btn.active {
+    color: #FFFFFF;
+    border-color: #3B82F6;
+    background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.35);
+}
+
+/* Gold Showcase Card & Badges */
+.gold-glow-card {
+    background: linear-gradient(135deg, rgba(28, 24, 15, 0.85) 0%, rgba(14, 16, 24, 0.9) 100%);
+    border: 1px solid rgba(234, 179, 8, 0.3);
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.7), 0 0 35px rgba(234, 179, 8, 0.15);
+}
+.gold-glow-card:hover {
+    border-color: rgba(234, 179, 8, 0.6);
+    box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.85), 0 0 50px rgba(234, 179, 8, 0.25);
+}
+.gold-badge {
+    background: rgba(234, 179, 8, 0.12);
+    border: 1px solid rgba(234, 179, 8, 0.3);
+    color: #FACC15;
+    border-radius: 9999px;
+    padding: 0.4rem 1.1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Lightbox Modal Overlay */
+.lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(4, 6, 12, 0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.lightbox-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+.lightbox-content {
+    position: relative;
+    max-width: 900px;
+    width: 100%;
+    max-height: 90vh;
+    background: linear-gradient(145deg, rgba(17, 20, 31, 0.95) 0%, rgba(10, 12, 20, 0.98) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 1.5rem;
+    box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9), 0 0 40px rgba(59, 130, 246, 0.2);
+    overflow: hidden;
+    transform: scale(0.92);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.lightbox-overlay.active .lightbox-content {
+    transform: scale(1);
+}
+
+/* Achievement Sliding Carousel */
+.achievement-slider-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(234, 179, 8, 0.25);
+    background: #08090D;
+}
+.achievement-slider-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.achievement-slide {
+    min-width: 100%;
+    position: relative;
+    height: 11rem;
+    cursor: pointer;
+    overflow: hidden;
+    background: #08090D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.achievement-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+}
+.achievement-slide:hover img {
+    transform: scale(1.03);
+}
+
+/* Mobile Drawer */
+#mobile-menu.hidden {
+    display: none;
+}

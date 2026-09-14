@@ -147,7 +147,7 @@ function initCertificateModal() {
         trigger.addEventListener('click', (e) => {
             e.preventDefault();
             const src = trigger.getAttribute('data-cert-src') || '';
-            const title = trigger.getAttribute('data-cert-[#3B82F6]') || trigger.getAttribute('data-cert-title') || 'Certificate & Recognition';
+            const title = trigger.getAttribute('data-cert-title') || 'Certificate & Recognition';
             const desc = trigger.getAttribute('data-cert-desc') || '';
 
             if (modalImg) {
@@ -199,7 +199,7 @@ function initSkillFilters() {
             skillCards.forEach(card => {
                 const cardCat = card.getAttribute('data-skill-category');
                 if (category === 'all' || cardCat.includes(category)) {
-                    card.style.display = 'flex';
+                    card.style.display = '';
                     setTimeout(() => {
                         card.style.opacity = '1';
                         card.style.transform = 'scale(1)';

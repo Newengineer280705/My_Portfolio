@@ -573,22 +573,31 @@
                 <!-- Project Card 1: MediScanner -->
                 <div class="card-base overflow-hidden flex flex-col justify-between group">
                     <div>
-                        <!-- Project Screenshot Mobile Frame Container -->
-                        <div class="h-64 bg-gradient-to-b from-[#121626] to-[#08090D] border-b border-white/5 relative overflow-hidden flex items-center justify-center p-3 group-hover:border-[#3B82F6]/40 transition-colors">
+                        <!-- Project Screenshot Mobile Frame Container with Modal Zoom -->
+                        <div data-cert-modal data-cert-src="mediscanner.png" data-cert-title="MediScanner – AI Medicine Identifier" data-cert-desc="Generative AI-powered medical scanning application for intelligent medicine analysis and prescription insights." class="h-64 bg-gradient-to-b from-[#121626] to-[#08090D] border-b border-white/5 relative overflow-hidden flex items-center justify-center p-3 group-hover:border-[#3B82F6]/40 transition-colors cursor-pointer">
                             <img src="mediscanner.png" alt="MediScanner AI Medicine Identifier" class="max-h-full w-auto object-contain rounded-xl shadow-[0_10px_25px_rgba(0,0,0,0.7)] border border-white/10 group-hover:scale-105 group-hover:-translate-y-1 transition-all duration-500">
+                            <!-- Overlay click hint -->
+                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
+                                <span class="text-[11px] font-bold text-white uppercase tracking-wider bg-black/80 px-3 py-1.5 rounded-full border border-white/20 shadow-lg flex items-center gap-1.5">
+                                    <i class="fas fa-magnifying-glass-plus text-[#60A5FA]"></i> Enlarge Preview
+                                </span>
+                            </div>
                         </div>
 
                         <div class="p-6 space-y-4">
-                            <h3 class="text-xl font-bold text-[#F9FAFB] group-hover:text-[#3B82F6] transition-colors">MediScanner</h3>
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-xl font-bold text-[#F9FAFB] group-hover:text-[#3B82F6] transition-colors">MediScanner</h3>
+                                <span class="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-[#3B82F6]/10 text-[#60A5FA] border border-[#3B82F6]/20">AI / HealthTech</span>
+                            </div>
                             
                             <p class="text-xs text-[#9CA3AF] leading-relaxed">
-                                AI-powered medical scanning application utilizing generative AI for intelligent medicine and prescription analysis.
+                                AI-powered medical scanning application utilizing Google Gemini API for intelligent medicine verification, usage instructions, and prescription analysis.
                             </p>
 
                             <div class="flex flex-wrap gap-1.5 text-[11px]">
-                                <span class="px-2.5 py-1 bg-[#08090D] border border-[#3B82F6]/20 text-[#60A5FA] rounded-md font-medium">React</span>
-                                <span class="px-2.5 py-1 bg-[#08090D] border border-[#3B82F6]/20 text-[#60A5FA] rounded-md font-medium">Gemini API</span>
-                                <span class="px-2.5 py-1 bg-[#08090D] border border-[#3B82F6]/20 text-[#60A5FA] rounded-md font-medium">JavaScript</span>
+                                <span class="px-2.5 py-1 bg-[#08090D] border border-[#3B82F6]/20 text-[#60A5FA] rounded-md font-medium flex items-center gap-1"><i class="fab fa-react text-[#61DAFB]"></i> React</span>
+                                <span class="px-2.5 py-1 bg-[#08090D] border border-[#3B82F6]/20 text-[#60A5FA] rounded-md font-medium flex items-center gap-1"><i class="fas fa-sparkles text-[#C084FC]"></i> Gemini API</span>
+                                <span class="px-2.5 py-1 bg-[#08090D] border border-[#3B82F6]/20 text-[#60A5FA] rounded-md font-medium flex items-center gap-1"><i class="fab fa-js text-[#F7DF1E]"></i> JavaScript</span>
                             </div>
                         </div>
                     </div>
@@ -607,22 +616,31 @@
                 <!-- Project Card 2: QR Code Generator -->
                 <div class="card-base overflow-hidden flex flex-col justify-between group">
                     <div>
-                        <!-- Project Screenshot Mobile Frame Container -->
-                        <div class="h-64 bg-gradient-to-b from-[#121626] to-[#08090D] border-b border-white/5 relative overflow-hidden flex items-center justify-center p-3 group-hover:border-[#3B82F6]/40 transition-colors">
+                        <!-- Project Screenshot Mobile Frame Container with Modal Zoom -->
+                        <div data-cert-modal data-cert-src="qrcode.png" data-cert-title="QR Code Generator Utility" data-cert-desc="Fast and responsive web application for generating and downloading high-resolution QR codes." class="h-64 bg-gradient-to-b from-[#121626] to-[#08090D] border-b border-white/5 relative overflow-hidden flex items-center justify-center p-3 group-hover:border-[#3B82F6]/40 transition-colors cursor-pointer">
                             <img src="qrcode.png" alt="QR Code Generator Project" class="max-h-full w-auto object-contain rounded-xl shadow-[0_10px_25px_rgba(0,0,0,0.7)] border border-white/10 group-hover:scale-105 group-hover:-translate-y-1 transition-all duration-500">
+                            <!-- Overlay click hint -->
+                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
+                                <span class="text-[11px] font-bold text-white uppercase tracking-wider bg-black/80 px-3 py-1.5 rounded-full border border-white/20 shadow-lg flex items-center gap-1.5">
+                                    <i class="fas fa-magnifying-glass-plus text-[#60A5FA]"></i> Enlarge Preview
+                                </span>
+                            </div>
                         </div>
 
                         <div class="p-6 space-y-4">
-                            <h3 class="text-xl font-bold text-[#F9FAFB] group-hover:text-[#3B82F6] transition-colors">QR Code Generator</h3>
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-xl font-bold text-[#F9FAFB] group-hover:text-[#3B82F6] transition-colors">QR Code Generator</h3>
+                                <span class="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-[#3B82F6]/10 text-[#60A5FA] border border-[#3B82F6]/20">Web Tool</span>
+                            </div>
                             
                             <p class="text-xs text-[#9CA3AF] leading-relaxed">
-                                Fast and responsive web utility application for generating custom downloadable QR codes for URLs, text, and data.
+                                Fast and responsive web utility application for generating customizable, high-resolution downloadable QR codes for URLs, text, and contact data.
                             </p>
 
                             <div class="flex flex-wrap gap-1.5 text-[11px]">
-                                <span class="px-2.5 py-1 bg-[#08090D] border border-[#3B82F6]/20 text-[#60A5FA] rounded-md font-medium">HTML</span>
-                                <span class="px-2.5 py-1 bg-[#08090D] border border-[#3B82F6]/20 text-[#60A5FA] rounded-md font-medium">CSS</span>
-                                <span class="px-2.5 py-1 bg-[#08090D] border border-[#3B82F6]/20 text-[#60A5FA] rounded-md font-medium">JavaScript</span>
+                                <span class="px-2.5 py-1 bg-[#08090D] border border-[#3B82F6]/20 text-[#60A5FA] rounded-md font-medium flex items-center gap-1"><i class="fab fa-html5 text-[#FB923C]"></i> HTML5</span>
+                                <span class="px-2.5 py-1 bg-[#08090D] border border-[#3B82F6]/20 text-[#60A5FA] rounded-md font-medium flex items-center gap-1"><i class="fab fa-css3-alt text-[#60A5FA]"></i> CSS3</span>
+                                <span class="px-2.5 py-1 bg-[#08090D] border border-[#3B82F6]/20 text-[#60A5FA] rounded-md font-medium flex items-center gap-1"><i class="fab fa-js text-[#F7DF1E]"></i> JavaScript</span>
                             </div>
                         </div>
                     </div>
@@ -669,10 +687,10 @@
                             </p>
 
                             <div class="flex flex-wrap gap-1.5 text-[11px]">
-                                <span class="px-2.5 py-1 bg-[#08090D] border border-amber-500/20 text-amber-300 rounded-md font-medium">React</span>
-                                <span class="px-2.5 py-1 bg-[#08090D] border border-amber-500/20 text-amber-300 rounded-md font-medium">TypeScript</span>
-                                <span class="px-2.5 py-1 bg-[#08090D] border border-amber-500/20 text-amber-300 rounded-md font-medium">CSS</span>
-                                <span class="px-2.5 py-1 bg-[#08090D] border border-amber-500/20 text-amber-300 rounded-md font-medium">Netlify</span>
+                                <span class="px-2.5 py-1 bg-[#08090D] border border-amber-500/20 text-amber-300 rounded-md font-medium flex items-center gap-1"><i class="fab fa-react text-[#61DAFB]"></i> React</span>
+                                <span class="px-2.5 py-1 bg-[#08090D] border border-amber-500/20 text-amber-300 rounded-md font-medium flex items-center gap-1"><i class="fas fa-code text-[#60A5FA]"></i> TypeScript</span>
+                                <span class="px-2.5 py-1 bg-[#08090D] border border-amber-500/20 text-amber-300 rounded-md font-medium flex items-center gap-1"><i class="fab fa-css3-alt text-[#60A5FA]"></i> CSS</span>
+                                <span class="px-2.5 py-1 bg-[#08090D] border border-amber-500/20 text-amber-300 rounded-md font-medium flex items-center gap-1"><i class="fas fa-globe text-[#60A5FA]"></i> Netlify</span>
                             </div>
                         </div>
                     </div>

@@ -446,3 +446,43 @@ body {
 #mobile-menu.hidden {
     display: none;
 }
+
+/* Certificate Category Filter Tabs */
+.cert-filter-btn {
+    padding: 0.5rem 1.25rem;
+    border-radius: 9999px;
+    font-size: 0.775rem;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(14, 16, 23, 0.75);
+    color: #9CA3AF;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+.cert-filter-btn:hover {
+    color: #F9FAFB;
+    border-color: rgba(59, 130, 246, 0.45);
+    background: rgba(59, 130, 246, 0.08);
+    transform: translateY(-1px);
+}
+.cert-filter-btn.active {
+    color: #FFFFFF;
+    border-color: #3B82F6;
+    background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.35);
+}
+
+/* Certificate Document Canvas & Mockup */
+.cert-preview-frame {
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at 50% 30%, rgba(30, 41, 69, 0.45) 0%, #08090D 80%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.cert-preview-frame:hover img,
+.cert-preview-frame:hover canvas {
+    transform: scale(1.04) translateY(-2px);
+}

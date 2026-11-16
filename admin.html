@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Dynamic Portfolio Control Center</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            950: '#06070A',
+                            900: '#0A0C13',
+                            850: '#0E1019',
+                            800: '#141724',
+                            700: '#1E2336',
+                        },
+                        electric: {
+                            500: '#3B82F6',
+                            600: '#2563EB',
+                            400: '#60A5FA',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            background-color: #06070A;
+            color: #F9FAFB;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+        .admin-card {
+            background: rgba(14, 16, 25, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1rem;
+            transition: all 0.25s ease;
+        }
+        .admin-card:hover {
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+        .input-base {
+            width: 100%;
+            background-color: #080A10;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #F9FAFB;
+            border-radius: 0.65rem;
+            padding: 0.65rem 0.95rem;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+        }
+        .input-base:focus {
+            outline: none;
+            border-color: #3B82F6;
+            box-shadow: 0 0 12px rgba(59, 130, 246, 0.25);
+        }
+        .label-base {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #9CA3AF;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.35rem;
+        }
+        .tab-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #9CA3AF;
+            transition: all 0.2s ease;
+            text-align: left;
+        }
+        .tab-btn:hover {
+            color: #F9FAFB;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .tab-btn.active {
+            color: #FFFFFF;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(37, 99, 235, 0.1) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.15);
+        }
+        /* Custom scrollbars */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #06070A; }
+        ::-webkit-scrollbar-thumb { background: #1E2336; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #3B82F6; }
+    </style>
+</head>
+<body class="min-h-screen antialiased flex flex-col justify-between">
+
+    <!-- Screen 1: Admin PIN Authentication Gate -->
+    <div id="auth-screen" class="fixed inset-0 z-50 bg-[#06070A]/95 backdrop-blur-xl flex items-center justify-center p-4">
+        <div class="admin-card max-w-md w-full p-8 border border-white/10 shadow-2xl space-y-6 text-center relative overflow-hidden">
+            <div class="absolute -top-20 -left-20 w-40 h-40 bg-blue-600/20 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="w-16 h-16 rounded-2xl bg-blue-600/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mx-auto text-2xl shadow-[0_0_20px_rgba(59,130,246,0.25)]">
+                <i class="fas fa-lock"></i>
+            </div>
+
+            <div>
+                <h1 class="text-2xl font-bold tracking-tight text-white">Portfolio Admin Portal</h1>
+                <p class="text-xs text-gray-400 mt-1">Enter your master security PIN to manage your portfolio</p>
+            </div>
+
+            <form id="pin-login-form" class="space-y-4">
+                <div class="relative">
+                    <input type="password" id="admin-pin-input" class="input-base text-center tracking-widest text-lg font-mono py-3" placeholder="••••••" autofocus required>
+                    <button type="button" id="toggle-pin-btn" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-300 text-sm">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                <p id="pin-error" class="text-xs text-red-400 hidden font-medium flex items-center justify-center gap-1">
+                    <i class="fas fa-circle-exclamation"></i> Incorrect PIN. Please try again.
+                </p>
+                <button type="submit" class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-bold text-sm shadow-lg shadow-blue-500/25 transition-all flex items-center justify-center gap-2">
+                    <i class="fas fa-shield-halved text-xs"></i> Unlock Admin Dashboard
+                </button>
+            </form>
+
+            <div class="pt-3 border-t border-white/5 text-[11px] text-gray-500 flex items-center justify-between">
+                <span>ENTER PIN: <code class="font-mono text-blue-400">Ar******3</code></span>
+                <a href="index.html" class="hover:text-blue-400 transition-colors">← Back to Portfolio</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 2: Main Admin Dashboard Workspace -->
+    <div id="dashboard-screen" class="hidden flex-1 flex flex-col min-h-screen">
+        
+        <!-- Top Control Bar -->
+        <header class="sticky top-0 z-40 bg-[#0A0C13]/90 backdrop-blur-xl border-b border-white/10 px-6 py-3.5 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <a href="index.html" class="text-lg font-bold text-white hover:text-blue-400 transition-colors flex items-center gap-2">
+                    <span class="w-8 h-8 rounded-lg bg-blue-600/15 border border-blue-500/30 flex items-center justify-center text-blue-400 text-sm">
+                        <i class="fas fa-sliders"></i>
+                    </span>
+                    <span>Admin Control Center</span>
+                </a>
+                <span class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[11px] font-medium">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Dynamic Mode Active
+                </span>
+            </div>
+
+            <!-- Header Quick Actions -->
+            <div class="flex items-center gap-2.5">
+                <a href="index.html" target="_blank" class="py-2 px-3.5 rounded-lg border border-white/10 hover:border-blue-500/40 bg-white/5 hover:bg-white/10 text-xs font-semibold text-gray-300 hover:text-white transition-all flex items-center gap-1.5">
+                    <i class="fas fa-arrow-up-right-from-square text-[10px]"></i> <span class="hidden sm:inline">View Live Site</span>
+                </a>
+
+                <button id="btn-export-data-js" class="py-2 px-3.5 rounded-lg border border-amber-500/30 bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 text-xs font-semibold transition-all flex items-center gap-1.5">
+                    <i class="fas fa-file-code text-[11px]"></i> <span class="hidden md:inline">Export data.js</span>
+                </button>
+
+                <button id="btn-quick-save" class="py-2 px-4 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold shadow-md shadow-blue-500/20 transition-all flex items-center gap-1.5">
+                    <i class="fas fa-floppy-disk text-xs"></i> <span>Save Changes</span>
+                </button>
+
+                <button id="btn-logout" title="Lock & Logout" class="w-9 h-9 rounded-lg border border-white/10 bg-white/5 hover:bg-red-500/20 hover:border-red-500/30 text-gray-400 hover:text-red-400 flex items-center justify-center transition-all">
+                    <i class="fas fa-right-from-bracket text-xs"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Body: Sidebar Tabs + Editor Panels -->
+        <div class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+            
+            <!-- Left Sidebar Navigation Menu (3 cols) -->
+            <aside class="md:col-span-3 space-y-1.5 admin-card p-3 sticky top-20">
+                <div class="px-3 py-2 text-[11px] font-bold text-gray-500 uppercase tracking-wider">
+                    Content Management
+                </div>
+                <button class="tab-btn active" data-tab="tab-hero">
+                    <i class="fas fa-user-astronaut text-blue-400 w-5"></i> <span>Hero & Profile</span>
+                </button>
+                <button class="tab-btn" data-tab="tab-about">
+                    <i class="fas fa-user-graduate text-purple-400 w-5"></i> <span>About & Story</span>
+                </button>
+                <button class="tab-btn" data-tab="tab-education">
+                    <i class="fas fa-graduation-cap text-sky-400 w-5"></i> <span>Education</span>
+                </button>
+                <button class="tab-btn" data-tab="tab-skills">
+                    <i class="fas fa-layer-group text-amber-400 w-5"></i> <span>Skills & Stack</span>
+                </button>
+                <button class="tab-btn" data-tab="tab-projects">
+                    <i class="fas fa-folder-open text-emerald-400 w-5"></i> <span>Projects</span>
+                </button>
+                <button class="tab-btn" data-tab="tab-achievements">
+                    <i class="fas fa-trophy text-yellow-400 w-5"></i> <span>VeerGatha Award</span>
+                </button>
+                <button class="tab-btn" data-tab="tab-certifications">
+                    <i class="fas fa-certificate text-rose-400 w-5"></i> <span>Certifications</span>
+                </button>
+                <button class="tab-btn" data-tab="tab-contact">
+                    <i class="fas fa-address-book text-indigo-400 w-5"></i> <span>Contact & Links</span>
+                </button>
+                <div class="pt-3 border-t border-white/5 px-3 py-1 text-[11px] font-bold text-gray-500 uppercase tracking-wider">
+                    Deployment & System
+                </div>
+                <button class="tab-btn" data-tab="tab-sync">
+                    <i class="fas fa-cloud-arrow-up text-teal-400 w-5"></i> <span>Export & Settings</span>
+                </button>
+            </aside>
+
+            <!-- Right Content Panels (9 cols) -->
+            <main class="md:col-span-9 space-y-6">
+
+                <!-- TAB 1: Hero & Profile -->
+                <div id="tab-hero" class="tab-pane space-y-6">
+                    <div class="admin-card p-6 space-y-5">
+                        <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                            <div>
+                                <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                                    <i class="fas fa-user-astronaut text-blue-400"></i> Hero & Profile Settings
+                                </h2>
+                                <p class="text-xs text-gray-400 mt-0.5">Customize your homepage headline, typewriter roles, and hero intro</p>
+                            </div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="label-base">Full Name</label>
+                                <input type="text" id="hero-name-input" class="input-base" placeholder="Arjun Singh Jadon">
+                            </div>
+                            <div>
+                                <label class="label-base">Status Badge Text</label>
+                                <input type="text" id="hero-badge-input" class="input-base" placeholder="B.Tech CS Student • SISTec Bhopal">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="label-base">Typewriter Rotating Titles (One per line)</label>
+                            <textarea id="hero-typewriter-input" rows="4" class="input-base font-mono text-xs" placeholder="VeerGatha 3.0 Winner&#10;B.Tech CS Student&#10;Aspiring Software Engineer&#10;Java Developer"></textarea>
+                            <span class="text-[11px] text-gray-500">Each line will animate sequentially in the typing carousel on the hero page.</span>
+                        </div>
+
+                        <div>
+                            <label class="label-base">Hero Bio Summary</label>
+                            <textarea id="hero-bio-input" rows="3" class="input-base" placeholder="Short impactful elevator pitch..."></textarea>
+                        </div>
+
+                        <!-- Profile Image & Resume Upload -->
+                        <div class="grid sm:grid-cols-2 gap-4 pt-2 border-t border-white/5">
+                            <div>
+                                <label class="label-base">Profile Picture</label>
+                                <div class="flex items-center gap-3">
+                                    <img id="avatar-preview" src="MYpic2.png" alt="Preview" class="w-14 h-14 rounded-full object-cover border border-white/20 bg-dark-900">
+                                    <div class="flex-1 space-y-1">
+                                        <input type="file" id="avatar-file-input" accept="image/*" class="text-xs text-gray-400 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-blue-600/20 file:text-blue-400 hover:file:bg-blue-600/30 cursor-pointer">
+                                        <input type="text" id="avatar-url-input" class="input-base text-xs" placeholder="Or enter filename/URL (e.g. MYpic2.png)">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="label-base">Resume PDF Link or File</label>
+                                <div class="space-y-1">
+                                    <input type="text" id="hero-resume-input" class="input-base" placeholder="Resume.pdf or external URL">
+                                    <span class="text-[11px] text-gray-500">Must match filename in repo (case-sensitive) or a cloud link.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: About & Story -->
+                <div id="tab-about" class="tab-pane hidden space-y-6">
+                    <div class="admin-card p-6 space-y-5">
+                        <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                            <div>
+                                <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                                    <i class="fas fa-user-graduate text-purple-400"></i> About & Personal Narrative
+                                </h2>
+                                <p class="text-xs text-gray-400 mt-0.5">Edit your journey description and the key highlight bullet cards</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="label-base">Story Heading</label>
+                            <input type="text" id="about-heading-input" class="input-base" placeholder="My Journey & Vision">
+                        </div>
+
+                        <div>
+                            <label class="label-base">Paragraph 1 (Main Bio Story)</label>
+                            <textarea id="about-p1-input" rows="3" class="input-base"></textarea>
+                        </div>
+
+                        <div>
+                            <label class="label-base">Paragraph 2 (Current Focus & Long-term Goal)</label>
+                            <textarea id="about-p2-input" rows="3" class="input-base"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: Education -->
+                <div id="tab-education" class="tab-pane hidden space-y-6">
+                    <div class="admin-card p-6 space-y-5">
+                        <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                            <div>
+                                <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                                    <i class="fas fa-graduation-cap text-sky-400"></i> Education History
+                                </h2>
+                                <p class="text-xs text-gray-400 mt-0.5">Degrees, school qualifications, and academic percentages</p>
+                            </div>
+                            <button id="btn-add-education" class="py-2 px-3.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold flex items-center gap-1.5 transition-all">
+                                <i class="fas fa-plus"></i> Add Education
+                            </button>
+                        </div>
+
+                        <!-- Dynamic Education Items List -->
+                        <div id="admin-education-list" class="space-y-4"></div>
+                    </div>
+                </div>
+
+                <!-- TAB 4: Skills & Stack -->
+                <div id="tab-skills" class="tab-pane hidden space-y-6">
+                    <div class="admin-card p-6 space-y-5">
+                        <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                            <div>
+                                <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                                    <i class="fas fa-layer-group text-amber-400"></i> Technical Skills & Proficiency
+                                </h2>
+                                <p class="text-xs text-gray-400 mt-0.5">Manage programming languages, percentages, and stack pills</p>
+                            </div>
+                        </div>
+
+                        <!-- Core Programming Languages -->
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <h3 class="text-sm font-bold text-white uppercase tracking-wider">Core Programming Languages</h3>
+                                <button id="btn-add-language" class="py-1 px-2.5 rounded bg-blue-600/20 text-blue-400 hover:bg-blue-600/30 text-xs font-semibold">
+                                    + Add Language
+                                </button>
+                            </div>
+                            <div id="admin-languages-list" class="space-y-3"></div>
+                        </div>
+
+                        <!-- Badges Lists (Comma-separated) -->
+                        <div class="grid sm:grid-cols-2 gap-4 pt-4 border-t border-white/5">
+                            <div>
+                                <label class="label-base">Web Technologies (Comma-separated)</label>
+                                <input type="text" id="skills-web-input" class="input-base" placeholder="React, TypeScript, JavaScript, HTML5, CSS3">
+                            </div>
+                            <div>
+                                <label class="label-base">Core CS Topics (Comma-separated)</label>
+                                <input type="text" id="skills-core-input" class="input-base" placeholder="DSA, OOP, STL, Logic Building">
+                            </div>
+                            <div>
+                                <label class="label-base">AI & GenAI Badges (Comma-separated)</label>
+                                <input type="text" id="skills-ai-input" class="input-base" placeholder="Gemini API, Generative AI">
+                            </div>
+                            <div>
+                                <label class="label-base">Tools & Platforms (Comma-separated)</label>
+                                <input type="text" id="skills-tools-input" class="input-base" placeholder="Git, GitHub, VS Code, Vite, Netlify">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 5: Projects Manager -->
+                <div id="tab-projects" class="tab-pane hidden space-y-6">
+                    <div class="admin-card p-6 space-y-5">
+                        <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                            <div>
+                                <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                                    <i class="fas fa-folder-open text-emerald-400"></i> Projects Manager
+                                </h2>
+                                <p class="text-xs text-gray-400 mt-0.5">Add, edit, or delete projects with live demos, code repos, and preview images</p>
+                            </div>
+                            <button id="btn-add-project" class="py-2 px-3.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-1.5 transition-all">
+                                <i class="fas fa-plus"></i> Add New Project
+                            </button>
+                        </div>
+
+                        <!-- Projects Grid List -->
+                        <div id="admin-projects-list" class="grid sm:grid-cols-2 gap-4"></div>
+                    </div>
+                </div>
+
+                <!-- TAB 6: Achievements & VeerGatha -->
+                <div id="tab-achievements" class="tab-pane hidden space-y-6">
+                    <div class="admin-card p-6 space-y-5">
+                        <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                            <div>
+                                <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                                    <i class="fas fa-trophy text-yellow-400"></i> VeerGatha 3.0 & National Awards
+                                </h2>
+                                <p class="text-xs text-gray-400 mt-0.5">Manage your Super 100 national honors, ceremony photos, and press details</p>
+                            </div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="label-base">Award Badge</label>
+                                <input type="text" id="ach-badge-input" class="input-base" placeholder="National Super 100 Winner">
+                            </div>
+                            <div>
+                                <label class="label-base">Candidate Pool Stat</label>
+                                <input type="text" id="ach-stat-input" class="input-base" placeholder="1 Crore (10 Million) Candidates">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="label-base">Main Award Title</label>
+                            <input type="text" id="ach-title-input" class="input-base" placeholder="Super 100 National Winner – VeerGatha 3.0">
+                        </div>
+
+                        <div>
+                            <label class="label-base">Organizing Body / Ministries</label>
+                            <input type="text" id="ach-organizer-input" class="input-base" placeholder="Organized by Ministry of Defence & Ministry of Education, Government of India">
+                        </div>
+
+                        <div>
+                            <label class="label-base">Detailed Description</label>
+                            <textarea id="ach-desc-input" rows="4" class="input-base"></textarea>
+                        </div>
+
+                        <div>
+                            <label class="label-base">Highlight Badges (Comma-separated)</label>
+                            <input type="text" id="ach-tags-input" class="input-base" placeholder="Ministry of Defence, Ministry of Education, Press & News Coverage">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 7: Certifications Manager -->
+                <div id="tab-certifications" class="tab-pane hidden space-y-6">
+                    <div class="admin-card p-6 space-y-5">
+                        <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                            <div>
+                                <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                                    <i class="fas fa-certificate text-rose-400"></i> Certifications & Credentials
+                                </h2>
+                                <p class="text-xs text-gray-400 mt-0.5">Add verified course certificates, scores, and downloadable documents</p>
+                            </div>
+                            <button id="btn-add-certificate" class="py-2 px-3.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold flex items-center gap-1.5 transition-all">
+                                <i class="fas fa-plus"></i> Add Certificate
+                            </button>
+                        </div>
+
+                        <!-- Certifications Grid List -->
+                        <div id="admin-certifications-list" class="grid sm:grid-cols-2 gap-4"></div>
+                    </div>
+                </div>
+
+                <!-- TAB 8: Contact & Socials -->
+                <div id="tab-contact" class="tab-pane hidden space-y-6">
+                    <div class="admin-card p-6 space-y-5">
+                        <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                            <div>
+                                <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                                    <i class="fas fa-address-book text-indigo-400"></i> Contact & Social Channels
+                                </h2>
+                                <p class="text-xs text-gray-400 mt-0.5">Manage your communication email, GitHub, LinkedIn, and footer notice</p>
+                            </div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="label-base">Email Address</label>
+                                <input type="email" id="contact-email-input" class="input-base" placeholder="arjun101jadone@gmail.com">
+                            </div>
+                            <div>
+                                <label class="label-base">LinkedIn Profile URL</label>
+                                <input type="url" id="contact-linkedin-input" class="input-base" placeholder="https://www.linkedin.com/in/arjun-singh-jadon-649619333">
+                            </div>
+                            <div>
+                                <label class="label-base">GitHub Profile URL</label>
+                                <input type="url" id="contact-github-input" class="input-base" placeholder="https://github.com/Newengineer280705">
+                            </div>
+                            <div>
+                                <label class="label-base">Footer Copyright Text</label>
+                                <input type="text" id="contact-footer-input" class="input-base" placeholder="© 2026 Arjun Singh Jadon. All rights reserved.">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 9: Export, Backup & Deploy Settings -->
+                <div id="tab-sync" class="tab-pane hidden space-y-6">
+                    <div class="admin-card p-6 space-y-6">
+                        <div class="border-b border-white/10 pb-4">
+                            <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                                <i class="fas fa-cloud-arrow-up text-teal-400"></i> Deployment, Backup & Security
+                            </h2>
+                            <p class="text-xs text-gray-400 mt-0.5">Export files to publish permanently to GitHub Pages, backup data, or update your PIN</p>
+                        </div>
+
+                        <!-- 1-Click Publish Guide -->
+                        <div class="p-5 rounded-xl bg-blue-600/10 border border-blue-500/25 space-y-3">
+                            <h3 class="text-sm font-bold text-blue-400 flex items-center gap-2">
+                                <i class="fas fa-rocket"></i> How to Publish Changes to the Live Worldwide Site
+                            </h3>
+                            <ol class="text-xs text-gray-300 space-y-1.5 list-decimal list-inside leading-relaxed">
+                                <li>Click the <strong class="text-white">"Download Updated data.js"</strong> button below.</li>
+                                <li>Replace the existing <code class="text-blue-300 font-mono">data.js</code> file in your portfolio directory with this downloaded file.</li>
+                                <li>Commit and push to GitHub: <code class="text-blue-300 font-mono">git commit -am "Update portfolio" && git push</code>.</li>
+                                <li>Your live domain (<span class="text-white">arjunsinghjadon.dpdns.org</span>) updates automatically for everyone in the world!</li>
+                            </ol>
+                            <div class="pt-2">
+                                <button id="btn-download-data-js-2" class="py-2.5 px-5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold shadow-md shadow-blue-500/20 transition-all flex items-center gap-2">
+                                    <i class="fas fa-download"></i> Download Updated data.js
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Backup / Restore -->
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div class="p-4 rounded-xl border border-white/10 bg-dark-900 space-y-3">
+                                <h4 class="text-xs font-bold text-white uppercase tracking-wider">JSON Data Backup</h4>
+                                <p class="text-xs text-gray-400">Export or import a complete JSON backup of your customized portfolio configuration.</p>
+                                <div class="flex gap-2">
+                                    <button id="btn-export-json" class="py-2 px-3.5 rounded-lg border border-white/10 hover:border-white/20 bg-white/5 text-xs font-semibold text-white">
+                                        <i class="fas fa-file-export mr-1"></i> Export JSON
+                                    </button>
+                                    <label class="py-2 px-3.5 rounded-lg border border-white/10 hover:border-white/20 bg-white/5 text-xs font-semibold text-white cursor-pointer">
+                                        <i class="fas fa-file-import mr-1"></i> Import JSON
+                                        <input type="file" id="json-import-input" accept=".json" class="hidden">
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Security: Change PIN -->
+                            <div class="p-4 rounded-xl border border-white/10 bg-dark-900 space-y-3">
+                                <h4 class="text-xs font-bold text-white uppercase tracking-wider">Change Admin PIN</h4>
+                                <div class="flex gap-2">
+                                    <input type="password" id="new-pin-input" class="input-base text-xs" placeholder="New PIN">
+                                    <button id="btn-change-pin" class="py-2 px-4 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-bold text-white shrink-0">
+                                        Update PIN
+                                    </button>
+                                </div>
+                                <span class="text-[11px] text-gray-500">Default PIN is <code class="font-mono text-blue-400">arjun123</code></span>
+                            </div>
+                        </div>
+
+                        <!-- Factory Reset -->
+                        <div class="pt-4 border-t border-white/5 flex items-center justify-between">
+                            <div>
+                                <h4 class="text-xs font-bold text-red-400">Reset to Factory Defaults</h4>
+                                <p class="text-xs text-gray-500">Clear custom changes and restore initial portfolio data.</p>
+                            </div>
+                            <button id="btn-reset-defaults" class="py-2 px-4 rounded-lg border border-red-500/30 bg-red-500/10 hover:bg-red-500/20 text-red-400 text-xs font-bold transition-all">
+                                <i class="fas fa-rotate-left mr-1"></i> Reset Data
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal: Add / Edit Project -->
+    <div id="modal-project" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="admin-card max-w-lg w-full p-6 space-y-4 border border-white/10 shadow-2xl overflow-y-auto max-h-[90vh]">
+            <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                <h3 id="modal-project-title" class="text-lg font-bold text-white">Add New Project</h3>
+                <button type="button" class="modal-close-btn text-gray-400 hover:text-white p-1">
+                    <i class="fas fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <form id="project-form" class="space-y-4">
+                <input type="hidden" id="proj-edit-id">
+
+                <div>
+                    <label class="label-base">Project Title *</label>
+                    <input type="text" id="proj-title-input" class="input-base" placeholder="e.g. MediScanner" required>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="label-base">Category Badge</label>
+                        <input type="text" id="proj-category-input" class="input-base" placeholder="e.g. AI / HealthTech">
+                    </div>
+                    <div>
+                        <label class="label-base">Status</label>
+                        <select id="proj-status-input" class="input-base">
+                            <option value="Live">Live</option>
+                            <option value="In Development">In Development (WIP)</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="label-base">Short Description</label>
+                    <textarea id="proj-desc-input" rows="3" class="input-base" placeholder="Describe the problem solved and core functionality..."></textarea>
+                </div>
+
+                <div>
+                    <label class="label-base">Tech Stack Tags (Comma-separated)</label>
+                    <input type="text" id="proj-tags-input" class="input-base" placeholder="React, Gemini API, JavaScript">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="label-base">GitHub Repo URL</label>
+                        <input type="url" id="proj-github-input" class="input-base" placeholder="https://github.com/...">
+                    </div>
+                    <div>
+                        <label class="label-base">Live Demo URL</label>
+                        <input type="url" id="proj-demo-input" class="input-base" placeholder="https://...netlify.app">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="label-base">Project Screenshot / Image</label>
+                    <div class="space-y-2">
+                        <input type="file" id="proj-file-input" accept="image/*" class="text-xs text-gray-400 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-blue-600/20 file:text-blue-400 hover:file:bg-blue-600/30 cursor-pointer">
+                        <input type="text" id="proj-img-url-input" class="input-base text-xs" placeholder="Or enter filename/URL (e.g. mediscanner.png)">
+                    </div>
+                </div>
+
+                <div class="flex justify-end gap-2 pt-2 border-t border-white/5">
+                    <button type="button" class="modal-close-btn py-2 px-4 rounded-lg bg-white/5 hover:bg-white/10 text-xs font-semibold text-gray-300">
+                        Cancel
+                    </button>
+                    <button type="submit" class="py-2 px-5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold">
+                        Save Project
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Add / Edit Certificate -->
+    <div id="modal-certificate" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="admin-card max-w-lg w-full p-6 space-y-4 border border-white/10 shadow-2xl overflow-y-auto max-h-[90vh]">
+            <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                <h3 id="modal-cert-title" class="text-lg font-bold text-white">Add New Certificate</h3>
+                <button type="button" class="modal-close-btn text-gray-400 hover:text-white p-1">
+                    <i class="fas fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <form id="cert-form" class="space-y-4">
+                <input type="hidden" id="cert-edit-id">
+
+                <div>
+                    <label class="label-base">Certificate Title *</label>
+                    <input type="text" id="cert-title-input" class="input-base" placeholder="e.g. NPTEL – Programming in Java" required>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="label-base">Issuer / Organization</label>
+                        <input type="text" id="cert-issuer-input" class="input-base" placeholder="e.g. NPTEL / IIT Kharagpur">
+                    </div>
+                    <div>
+                        <label class="label-base">Score / Status Badge</label>
+                        <input type="text" id="cert-score-input" class="input-base" placeholder="e.g. 95% Score / Elite">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="label-base">Category</label>
+                        <select id="cert-category-input" class="input-base">
+                            <option value="programming">Java & Programming</option>
+                            <option value="ai">AI & Machine Learning</option>
+                            <option value="data">Data Science & Analytics</option>
+                            <option value="networking">Networking & Infrastructure</option>
+                            <option value="professional">Professional Skills</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="label-base">FontAwesome Icon Class</label>
+                        <input type="text" id="cert-icon-input" class="input-base font-mono text-xs" placeholder="fab fa-java (or fas fa-certificate)">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="label-base">Description</label>
+                    <input type="text" id="cert-desc-input" class="input-base" placeholder="Certified in Core Java & Object-Oriented Programming">
+                </div>
+
+                <div>
+                    <label class="label-base">Skill Tags (Comma-separated)</label>
+                    <input type="text" id="cert-tags-input" class="input-base" placeholder="Core Java, OOP, NPTEL Elite">
+                </div>
+
+                <div>
+                    <label class="label-base">Certificate Image or PDF</label>
+                    <div class="space-y-2">
+                        <div id="cert-preview-box" class="h-28 rounded-lg border border-dashed border-white/20 bg-dark-900 flex items-center justify-center p-2 overflow-hidden">
+                            <img id="cert-modal-preview-img" src="" alt="Preview" class="hidden max-h-full object-contain rounded">
+                            <span id="cert-modal-preview-placeholder" class="text-xs text-gray-500 flex items-center gap-1.5"><i class="fas fa-image"></i> Certificate image preview will appear here</span>
+                        </div>
+                        <input type="file" id="cert-file-input" accept="image/*,application/pdf" class="text-xs text-gray-400 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-blue-600/20 file:text-blue-400 hover:file:bg-blue-600/30 cursor-pointer">
+                        <input type="text" id="cert-url-input" class="input-base text-xs" placeholder="Or enter filename/URL (e.g. NPTELjava.jpeg)">
+                    </div>
+                </div>
+
+                <div class="flex justify-end gap-2 pt-2 border-t border-white/5">
+                    <button type="button" class="modal-close-btn py-2 px-4 rounded-lg bg-white/5 hover:bg-white/10 text-xs font-semibold text-gray-300">
+                        Cancel
+                    </button>
+                    <button type="submit" class="py-2 px-5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold">
+                        Save Certificate
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Add / Edit Education -->
+    <div id="modal-education" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="admin-card max-w-lg w-full p-6 space-y-4 border border-white/10 shadow-2xl overflow-y-auto max-h-[90vh]">
+            <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                <h3 id="modal-edu-title" class="text-lg font-bold text-white">Add Education Entry</h3>
+                <button type="button" class="modal-close-btn text-gray-400 hover:text-white p-1">
+                    <i class="fas fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <form id="edu-form" class="space-y-4">
+                <input type="hidden" id="edu-edit-id">
+
+                <div>
+                    <label class="label-base">Degree / Qualification *</label>
+                    <input type="text" id="edu-degree-input" class="input-base" placeholder="e.g. B.Tech in Computer Science & Engineering" required>
+                </div>
+
+                <div>
+                    <label class="label-base">Institution Name *</label>
+                    <input type="text" id="edu-inst-input" class="input-base" placeholder="e.g. Sagar Institute of Science and Technology (SISTec)" required>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="label-base">Year Duration</label>
+                        <input type="text" id="edu-year-input" class="input-base" placeholder="e.g. 2024 – 2028 or Passed 2024">
+                    </div>
+                    <div>
+                        <label class="label-base">Score / Percentage</label>
+                        <input type="text" id="edu-score-input" class="input-base" placeholder="e.g. 90% Score">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="label-base">Description (Optional)</label>
+                    <input type="text" id="edu-desc-input" class="input-base" placeholder="Completed Higher Secondary Education in 2024...">
+                </div>
+
+                <div>
+                    <label class="label-base">Subject / Topic Tags (Comma-separated)</label>
+                    <input type="text" id="edu-tags-input" class="input-base" placeholder="Computer Science, Software Engineering, DSA">
+                </div>
+
+                <div class="flex justify-end gap-2 pt-2 border-t border-white/5">
+                    <button type="button" class="modal-close-btn py-2 px-4 rounded-lg bg-white/5 hover:bg-white/10 text-xs font-semibold text-gray-300">
+                        Cancel
+                    </button>
+                    <button type="submit" class="py-2 px-5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold">
+                        Save Education
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification Banner -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 px-4 py-3 rounded-xl bg-blue-600 text-white font-semibold text-xs shadow-2xl flex items-center gap-2 pointer-events-none">
+        <i class="fas fa-check-circle"></i>
+        <span id="toast-message">Changes saved successfully!</span>
+    </div>
+
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

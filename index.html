@@ -52,7 +52,7 @@
     <header class="sticky top-0 z-50 nav-sticky">
         <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center" aria-label="Main Navigation">
             <!-- Logo / Name -->
-            <a href="#home" class="text-xl font-bold tracking-tight text-[#F9FAFB] hover:text-[#3B82F6] transition-colors flex items-center gap-1">
+            <a href="#home" id="nav-logo" class="text-xl font-bold tracking-tight text-[#F9FAFB] hover:text-[#3B82F6] transition-colors flex items-center gap-1">
                 <span class="text-[#3B82F6] font-mono">&lt;</span>Arjun Singh Jadon<span class="text-[#3B82F6] font-mono"> /&gt;</span>
             </a>
 
@@ -65,7 +65,7 @@
                 <a href="#projects" class="nav-link-modern hover:text-[#F9FAFB] transition-colors">Projects</a>
                 <a href="#certifications" class="nav-link-modern hover:text-[#F9FAFB] transition-colors">Certifications</a>
                 <a href="#contact" class="nav-link-modern hover:text-[#F9FAFB] transition-colors">Contact</a>
-                <a href="resume.pdf" download target="_blank" rel="noopener noreferrer" class="btn-blue-primary text-xs py-2.5 px-5 font-semibold tracking-wider uppercase rounded-lg">
+                <a href="Resume.pdf" download target="_blank" rel="noopener noreferrer" class="resume-link btn-blue-primary text-xs py-2.5 px-5 font-semibold tracking-wider uppercase rounded-lg">
                     Resume
                 </a>
             </div>
@@ -85,7 +85,7 @@
             <a href="#projects" class="block text-base text-[#9CA3AF] hover:text-[#3B82F6]">Projects</a>
             <a href="#certifications" class="block text-base text-[#9CA3AF] hover:text-[#3B82F6]">Certifications</a>
             <a href="#contact" class="block text-base text-[#9CA3AF] hover:text-[#3B82F6]">Contact</a>
-            <a href="resume.pdf" download target="_blank" rel="noopener noreferrer" class="inline-block btn-blue-primary text-xs py-2 px-6 font-semibold uppercase tracking-wider rounded-lg">
+            <a href="Resume.pdf" download target="_blank" rel="noopener noreferrer" class="resume-link inline-block btn-blue-primary text-xs py-2 px-6 font-semibold uppercase tracking-wider rounded-lg">
                 Resume
             </a>
         </div>
@@ -102,10 +102,10 @@
                       <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#3B82F6] opacity-75"></span>
                       <span class="relative inline-flex rounded-full h-2 w-2 bg-[#3B82F6]"></span>
                     </span>
-                    <span>B.Tech CS Student • SISTec Bhopal</span>
+                    <span id="hero-badge-text">B.Tech CS Student • SISTec Bhopal</span>
                 </div>
 
-                <h1 class="text-4xl sm:text-6xl font-bold tracking-tight text-[#F9FAFB] leading-tight">
+                <h1 id="hero-name" class="text-4xl sm:text-6xl font-bold tracking-tight text-[#F9FAFB] leading-tight">
                     Arjun Singh Jadon
                 </h1>
 
@@ -113,7 +113,7 @@
                     <span id="typewriter-text"></span><span class="animate-pulse text-[#3B82F6] font-normal">|</span>
                 </h2>
 
-                <p class="text-base sm:text-lg text-[#9CA3AF] leading-relaxed max-w-xl font-normal">
+                <p id="hero-bio" class="text-base sm:text-lg text-[#9CA3AF] leading-relaxed max-w-xl font-normal">
                     Computer Science Engineering student at SISTec Bhopal passionate about building practical technology solutions, mastering DSA & OOP, and exploring AI-powered applications.
                 </p>
 
@@ -122,14 +122,13 @@
                     <a href="#projects" class="btn-blue-primary">
                         <i class="fas fa-rocket mr-2 text-xs"></i> View Projects
                     </a>
-                    <a href="resume.pdf" download target="_blank" rel="noopener noreferrer" class="btn-outline-secondary">
+                    <a href="Resume.pdf" download target="_blank" rel="noopener noreferrer" class="resume-link btn-outline-secondary">
                         <i class="fas fa-file-arrow-down mr-2 text-xs text-[#3B82F6]"></i> Download Resume
                     </a>
                 </div>
 
                 <!-- Social Links Bar -->
-                <div class="flex items-center gap-3 pt-4">
-                    
+                <div id="hero-socials" class="flex items-center gap-3 pt-4">
                     <a href="https://github.com/Newengineer280705" target="_blank" rel="noopener noreferrer" class="social-btn-modern" aria-label="GitHub"><i class="fab fa-github"></i></a>
                     <a href="https://www.linkedin.com/in/arjun-singh-jadon-649619333" target="_blank" rel="noopener noreferrer" class="social-btn-modern" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     <a href="mailto:arjun101jadone@gmail.com" class="social-btn-modern" aria-label="Email"><i class="fas fa-envelope"></i></a>
@@ -139,7 +138,8 @@
             <!-- Right Column: Profile Image Container -->
             <div class="md:col-span-5 flex justify-center items-center reveal-on-scroll">
                 <div class="profile-gradient-container">
-                    <img src="MYpic2.png" 
+                    <img id="hero-profile-img" 
+                          src="MYpic2.png" 
                           alt="Arjun Singh Jadon" 
                           class="w-64 h-64 sm:w-80 sm:h-80 md:w-[320px] md:h-[320px] rounded-full object-cover bg-[#141722]">
                 </div>
@@ -164,7 +164,7 @@
 
             <div class="grid md:grid-cols-12 gap-8 items-stretch">
                 <!-- Bio Story -->
-                <div class="md:col-span-7 card-base p-8 space-y-5">
+                <div id="about-story-container" class="md:col-span-7 card-base p-8 space-y-5">
                     <h3 class="text-xl font-bold text-[#3B82F6] flex items-center gap-2">
                         <i class="fas fa-compass text-[#60A5FA]"></i> My Journey & Vision
                     </h3>
@@ -182,7 +182,7 @@
                         <i class="fas fa-bolt text-[#3B82F6]"></i> Key Highlights
                     </h3>
 
-                    <ul class="space-y-4 text-xs text-[#9CA3AF]">
+                    <ul id="about-highlights-list" class="space-y-4 text-xs text-[#9CA3AF]">
                         <li class="flex items-start gap-3">
                             <div class="w-7 h-7 rounded-lg bg-[#3B82F6]/10 flex items-center justify-center text-[#3B82F6] shrink-0 mt-0.5">
                                 <i class="fas fa-graduation-cap"></i>
@@ -239,7 +239,7 @@
                 <span class="h-0.5 flex-1 bg-white/10 ml-4"></span>
             </div>
 
-            <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-6">
+            <div id="education-grid" class="grid lg:grid-cols-3 md:grid-cols-2 gap-6">
                 <!-- Degree Card -->
                 <div class="card-base p-8 relative border-l-4 border-l-[#3B82F6] space-y-4 flex flex-col justify-between">
                     <div class="space-y-4">
@@ -381,7 +381,7 @@
                         </div>
 
                         <!-- Skill Level Meter Bars -->
-                        <div class="space-y-4 pt-1">
+                        <div id="skills-languages-meter" class="space-y-4 pt-1">
                             <!-- Java (Primary Main Language) -->
                             <div class="space-y-1.5">
                                 <div class="flex justify-between text-xs font-semibold">
@@ -428,7 +428,7 @@
                         </div>
 
                         <!-- Brand Badges -->
-                        <div class="flex flex-wrap gap-2.5 pt-1">
+                        <div id="skills-languages-badges" class="flex flex-wrap gap-2.5 pt-1">
                             <span class="brand-badge brand-java"><i class="fab fa-java text-[#FB923C]"></i> Java (Main)</span>
                             <span class="brand-badge brand-js"><i class="fab fa-js text-[#F7DF1E]"></i> JavaScript</span>
                             <span class="brand-badge brand-cpp"><i class="fas fa-code text-[#60A5FA]"></i> C++ (Learnt)</span>
@@ -495,7 +495,7 @@
                             </div>
                         </div>
 
-                        <div class="flex flex-wrap gap-2.5 pt-2">
+                        <div id="skills-web-badges" class="flex flex-wrap gap-2.5 pt-2">
                             <span class="brand-badge brand-react"><i class="fab fa-react text-[#61DAFB] text-base"></i> React</span>
                             <span class="brand-badge brand-ts"><i class="fas fa-code text-[#60A5FA] text-sm"></i> TypeScript</span>
                             <span class="brand-badge brand-js"><i class="fab fa-js text-[#F7DF1E] text-base"></i> JavaScript</span>
@@ -518,7 +518,7 @@
                             </div>
                         </div>
 
-                        <div class="flex flex-wrap gap-2.5 pt-2">
+                        <div id="skills-core-badges" class="flex flex-wrap gap-2.5 pt-2">
                             <span class="brand-badge"><i class="fas fa-diagram-project text-[#3B82F6]"></i> DSA</span>
                             <span class="brand-badge"><i class="fas fa-layer-group text-[#3B82F6]"></i> OOP</span>
                             <span class="brand-badge"><i class="fas fa-boxes-stacked text-[#3B82F6]"></i> STL</span>
@@ -540,7 +540,7 @@
                             </div>
                         </div>
 
-                        <div class="flex flex-wrap gap-2.5 pt-2">
+                        <div id="skills-tools-badges" class="flex flex-wrap gap-2.5 pt-2">
                             <span class="brand-badge brand-git"><i class="fab fa-git-alt text-[#F87171] text-base"></i> Git</span>
                             <span class="brand-badge"><i class="fab fa-github text-[#F9FAFB] text-base"></i> GitHub</span>
                             <span class="brand-badge"><i class="fas fa-code text-[#60A5FA] text-base"></i> VS Code</span>
@@ -568,7 +568,7 @@
                 <span class="h-0.5 flex-1 bg-white/10 ml-4"></span>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
+            <div id="projects-grid" class="grid md:grid-cols-3 gap-8">
                 
                 <!-- Project Card 1: MediScanner -->
                 <div class="card-base overflow-hidden flex flex-col justify-between group">
@@ -734,15 +734,15 @@
                     <!-- Left Details Column (7 Cols) -->
                     <div class="md:col-span-7 space-y-6">
                         <div class="flex flex-wrap items-center gap-2">
-                            <span class="gold-badge">
+                            <span id="achievement-badge" class="gold-badge">
                                 <i class="fas fa-award text-amber-400"></i> National Super 100 Winner
                             </span>
-                            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300">
+                            <span id="achievement-stat" class="px-3 py-1 text-xs font-semibold rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300">
                                 1 Crore (10 Million) Candidates
                             </span>
                         </div>
 
-                        <div class="space-y-2">
+                        <div id="achievement-heading-container" class="space-y-2">
                             <h3 class="text-2xl sm:text-3xl font-extrabold text-[#F9FAFB] leading-tight">
                                 Super 100 National Winner – <span class="text-amber-400">VeerGatha 3.0</span>
                             </h3>
@@ -751,12 +751,12 @@
                             </p>
                         </div>
 
-                        <p class="text-xs sm:text-sm text-[#9CA3AF] leading-relaxed">
+                        <p id="achievement-desc" class="text-xs sm:text-sm text-[#9CA3AF] leading-relaxed">
                             Selected as a <strong class="text-amber-300">National Super 100 Winner</strong> among <strong class="text-[#F9FAFB]">1 Crore (10 Million) students</strong> across 2.5 Lakh schools in India. Honored at New Delhi during Republic Day 2024 celebrations with a national medal and ₹10,000 cash award by Raksha Mantri Shri Rajnath Singh and Education Minister Shri Dharmendra Pradhan.
                         </p>
 
                         <!-- Key Highlight Badges -->
-                        <div class="flex flex-wrap gap-2.5 pt-1 text-xs">
+                        <div id="achievement-tags" class="flex flex-wrap gap-2.5 pt-1 text-xs">
                             <span class="px-3 py-1.5 bg-[#08090D] border border-amber-500/20 text-amber-300 rounded-lg font-medium flex items-center gap-1.5">
                                 <i class="fas fa-landmark text-amber-400"></i> Ministry of Defence
                             </span>
@@ -846,20 +846,33 @@
     </section>
 
     <!-- SECTION 7: Certifications -->
-    <section id="certifications" class="py-24 px-6 border-t border-white/5 relative z-10">
-        <div class="max-w-6xl mx-auto reveal-on-scroll">
-            <div class="flex items-center gap-3 mb-10">
-                <div class="w-10 h-10 rounded-xl bg-[#3B82F6]/10 border border-[#3B82F6]/20 flex items-center justify-center text-[#3B82F6]">
-                    <i class="fas fa-certificate text-lg"></i>
-                </div>
+    <section id="certifications" class="py-24 px-6 border-t border-white/5 relative z-10 overflow-hidden">
+        <!-- Ambient Background Glow -->
+        <div class="absolute -top-24 right-1/4 w-[450px] h-[450px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto reveal-on-scroll relative z-10">
+            <!-- Section Header & Filter Tabs -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
                 <div>
-                    <h2 class="text-3xl font-bold text-[#F9FAFB]">Certifications</h2>
-                    <p class="text-xs text-[#9CA3AF]">Verified credentials and specialized courses</p>
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#3B82F6]/10 border border-[#3B82F6]/25 text-[#60A5FA] text-xs font-semibold mb-3">
+                        <i class="fas fa-award text-xs"></i> Verified Credentials & Honors
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-[#F9FAFB]">Certifications & Licenses</h2>
+                    <p class="text-xs sm:text-sm text-[#9CA3AF] mt-1 max-w-xl">
+                        Accredited technical certifications, competitive exam scores, and professional credentials with verifiable proof.
+                    </p>
                 </div>
-                <span class="h-0.5 flex-1 bg-white/10 ml-4"></span>
+
+                <!-- Interactive Category Filter Tabs -->
+                <div class="flex flex-wrap items-center gap-2">
+                    <button class="cert-filter-btn active" data-cert-filter="all"><i class="fas fa-layer-group text-xs mr-1"></i> All Credentials</button>
+                    <button class="cert-filter-btn" data-cert-filter="programming"><i class="fab fa-java text-xs mr-1"></i> Java & Code</button>
+                    <button class="cert-filter-btn" data-cert-filter="ai-data"><i class="fas fa-brain text-xs mr-1"></i> AI & Data</button>
+                    <button class="cert-filter-btn" data-cert-filter="professional"><i class="fas fa-user-tie text-xs mr-1"></i> Professional</button>
+                </div>
             </div>
 
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div id="certifications-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 
                 <!-- Cert 1: NPTEL -->
                 <div class="card-base p-6 flex flex-col justify-between space-y-4 border-t-2 border-t-[#3B82F6]/60 group">
@@ -986,44 +999,47 @@
             <!-- Contact Grid Cards -->
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
                 <!-- Email Card -->
-                <a href="mailto:arjun101jadone@gmail.com" class="card-base p-6 flex flex-col items-center text-center space-y-3 group">
+                <a id="contact-email-link" href="mailto:arjun101jadone@gmail.com" class="card-base p-6 flex flex-col items-center text-center space-y-3 group">
                     <div class="w-12 h-12 rounded-xl bg-[#3B82F6]/10 border border-[#3B82F6]/20 flex items-center justify-center text-[#3B82F6] text-xl group-hover:scale-110 transition-transform">
                         <i class="fas fa-envelope"></i>
                     </div>
                     <span class="text-xs font-bold uppercase tracking-wider text-[#F9FAFB]">Email</span>
-                    <span class="text-[11px] text-[#9CA3AF] group-hover:text-[#60A5FA] transition-colors break-all">arjun101jadone@gmail.com</span>
+                    <span class="contact-label text-[11px] text-[#9CA3AF] group-hover:text-[#60A5FA] transition-colors break-all">arjun101jadone@gmail.com</span>
                 </a>
 
                 <!-- LinkedIn Card -->
-                <a href="https://www.linkedin.com/in/arjun-singh-jadon-649619333" target="_blank" rel="noopener noreferrer" class="card-base p-6 flex flex-col items-center text-center space-y-3 group">
+                <a id="contact-linkedin-link" href="https://www.linkedin.com/in/arjun-singh-jadon-649619333" target="_blank" rel="noopener noreferrer" class="card-base p-6 flex flex-col items-center text-center space-y-3 group">
                     <div class="w-12 h-12 rounded-xl bg-[#3B82F6]/10 border border-[#3B82F6]/20 flex items-center justify-center text-[#3B82F6] text-xl group-hover:scale-110 transition-transform">
                         <i class="fab fa-linkedin-in"></i>
                     </div>
                     <span class="text-xs font-bold uppercase tracking-wider text-[#F9FAFB]">LinkedIn</span>
-                    <span class="text-[11px] text-[#9CA3AF] group-hover:text-[#60A5FA] transition-colors">arjun-singh-jadon</span>
+                    <span class="contact-label text-[11px] text-[#9CA3AF] group-hover:text-[#60A5FA] transition-colors">arjun-singh-jadon</span>
                 </a>
 
                 <!-- GitHub Card -->
-                <a href="https://github.com/Newengineer280705" target="_blank" rel="noopener noreferrer" class="card-base p-6 flex flex-col items-center text-center space-y-3 group">
+                <a id="contact-github-link" href="https://github.com/Newengineer280705" target="_blank" rel="noopener noreferrer" class="card-base p-6 flex flex-col items-center text-center space-y-3 group">
                     <div class="w-12 h-12 rounded-xl bg-[#3B82F6]/10 border border-[#3B82F6]/20 flex items-center justify-center text-[#3B82F6] text-xl group-hover:scale-110 transition-transform">
                         <i class="fab fa-github"></i>
                     </div>
                     <span class="text-xs font-bold uppercase tracking-wider text-[#F9FAFB]">GitHub</span>
-                    <span class="text-[11px] text-[#9CA3AF] group-hover:text-[#60A5FA] transition-colors">Newengineer280705</span>
+                    <span class="contact-label text-[11px] text-[#9CA3AF] group-hover:text-[#60A5FA] transition-colors">Newengineer280705</span>
                 </a>
 
                 <!-- Resume Download Card -->
-                <a href="resume.pdf" download target="_blank" rel="noopener noreferrer" class="card-base p-6 flex flex-col items-center text-center space-y-3 group">
+                <a id="contact-resume-link" href="Resume.pdf" download target="_blank" rel="noopener noreferrer" class="resume-link card-base p-6 flex flex-col items-center text-center space-y-3 group">
                     <div class="w-12 h-12 rounded-xl bg-[#3B82F6]/10 border border-[#3B82F6]/20 flex items-center justify-center text-[#3B82F6] text-xl group-hover:scale-110 transition-transform">
                         <i class="fas fa-file-arrow-down"></i>
                     </div>
                     <span class="text-xs font-bold uppercase tracking-wider text-[#F9FAFB]">Resume</span>
-                    <span class="text-[11px] text-[#9CA3AF] group-hover:text-[#60A5FA] transition-colors">Download PDF</span>
+                    <span class="contact-label text-[11px] text-[#9CA3AF] group-hover:text-[#60A5FA] transition-colors">Download PDF</span>
                 </a>
             </div>
 
-            <div class="border-t border-white/5 pt-8 text-center">
-                <p class="text-xs text-[#9CA3AF]/70">© 2026 Arjun Singh Jadon. All rights reserved.</p>
+            <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+                <p id="footer-copyright" class="text-xs text-[#9CA3AF]/70">© 2026 Arjun Singh Jadon. All rights reserved.</p>
+                <a href="admin.html" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border border-white/10 hover:border-[#3B82F6]/50 bg-[#0E1017] text-xs text-[#9CA3AF] hover:text-[#60A5FA] transition-all shadow-sm">
+                    <i class="fas fa-lock text-[11px] text-[#3B82F6]"></i> Admin Dashboard
+                </a>
             </div>
 
         </div>
@@ -1037,18 +1053,28 @@
                     <h3 id="modal-title" class="text-lg font-bold text-[#F9FAFB]">Certificate Viewer</h3>
                     <p id="modal-desc" class="text-xs text-[#9CA3AF]">Official Recognition & Credential</p>
                 </div>
-                <button id="modal-close" class="w-9 h-9 rounded-lg bg-white/10 hover:bg-white/20 text-[#F9FAFB] flex items-center justify-center transition-colors">
-                    <i class="fas fa-xmark text-lg"></i>
-                </button>
+                <div class="flex items-center gap-2">
+                    <a id="modal-direct-link" href="#" target="_blank" rel="noopener noreferrer" class="hidden py-1.5 px-3 rounded-lg border border-white/10 hover:border-blue-500/40 bg-white/5 text-xs text-blue-400 font-semibold flex items-center gap-1.5 transition-colors">
+                        <i class="fas fa-arrow-up-right-from-square text-[10px]"></i> Open Original
+                    </a>
+                    <button id="modal-close" class="w-9 h-9 rounded-lg bg-white/10 hover:bg-white/20 text-[#F9FAFB] flex items-center justify-center transition-colors">
+                        <i class="fas fa-xmark text-lg"></i>
+                    </button>
+                </div>
             </div>
-            <div class="p-6 flex items-center justify-center min-h-[300px] bg-[#08090D] overflow-auto">
+            <div id="modal-media-container" class="p-6 flex items-center justify-center min-h-[320px] bg-[#08090D] overflow-auto">
                 <img id="modal-img" src="" alt="Certificate Preview" class="max-h-[70vh] max-w-full object-contain rounded-lg shadow-2xl border border-white/10">
+                <iframe id="modal-iframe" src="" class="hidden w-full h-[70vh] rounded-lg border border-white/10"></iframe>
             </div>
         </div>
     </div>
 
+    <!-- PDF.js CDN Library for Rendering PDF Previews -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <!-- Three.js CDN Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Dynamic Portfolio Data Store -->
+    <script src="data.js"></script>
     <!-- Custom App Script -->
     <script src="app.js"></script>
 </body>

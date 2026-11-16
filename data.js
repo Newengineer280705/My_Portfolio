@@ -221,7 +221,7 @@ const DEFAULT_PORTFOLIO_DATA = {
 
 const STORAGE_KEY = 'portfolio_custom_data_v1';
 const ADMIN_PIN_KEY = 'portfolio_admin_pin_v1';
-const DEFAULT_PIN = 'arjun123';
+ const DEFAULT_PIN = 'Arjun@123';
 
 // Storage Helper Functions
 function getPortfolioData() {
